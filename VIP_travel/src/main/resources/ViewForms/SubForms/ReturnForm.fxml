@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.ReturnFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#080808" height="404.0" layoutX="30.0" layoutY="39.0" stroke="GOLD" strokeType="INSIDE" width="613.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="241.0" layoutX="14.0" layoutY="458.0" stroke="GOLD" strokeType="INSIDE" width="970.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="70.0" layoutX="668.0" layoutY="377.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="318.0" layoutX="665.0" layoutY="40.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
+      <TextField fx:id="txtReturn" layoutX="71.0" layoutY="130.0" prefHeight="34.0" prefWidth="198.0" />
+      <TextField fx:id="txtNIC" layoutX="71.0" layoutY="210.0" prefHeight="34.0" prefWidth="198.0" />
+      <TextField fx:id="txtRegNO" layoutX="71.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" />
+      <DatePicker fx:id="ReturnDate" layoutX="394.0" layoutY="130.0" onAction="#setReturnDate" prefHeight="34.0" prefWidth="198.0" />
+      <JFXComboBox fx:id="cmbStatus" layoutX="71.0" layoutY="385.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: white;" />
+      <TextField fx:id="txtvehicle" editable="false" layoutX="394.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" />
+      <TextField fx:id="txtName" editable="false" layoutX="394.0" layoutY="210.0" prefHeight="34.0" prefWidth="198.0" />
+      <Label layoutX="71.0" layoutY="185.0" prefHeight="18.0" prefWidth="124.0" text="Customer NIC" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="269.0" prefHeight="18.0" prefWidth="124.0" text="Vehicle Register No" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="357.0" prefHeight="18.0" prefWidth="124.0" text="Stuates" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="106.0" prefHeight="18.0" prefWidth="124.0" text="Return ID " textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="394.0" layoutY="106.0" prefHeight="18.0" prefWidth="124.0" text="Return Date" textFill="#fffbfb">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="394.0" layoutY="185.0" prefHeight="18.0" prefWidth="124.0" text="Customer Name" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="394.0" layoutY="269.0" prefHeight="18.0" prefWidth="124.0" text="Vehicle" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="221.0" layoutY="46.0" prefHeight="35.0" prefWidth="222.0" text="Vehicle Return Form" textFill="GOLD">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblReturn" layoutX="17.0" layoutY="461.0" prefHeight="234.0" prefWidth="962.0">
+        <columns>
+          <TableColumn fx:id="colReturnID" prefWidth="120.79998397827148" text="Return ID" />
+          <TableColumn fx:id="colStatus" prefWidth="122.40000915527344" text="Status" />
+            <TableColumn fx:id="colRetDate" prefWidth="138.4000244140625" text="Return Date" />
+            <TableColumn fx:id="colNIC" prefWidth="131.99993896484375" text="Customer NIC" />
+            <TableColumn fx:id="colRegNo" minWidth="0.0" prefWidth="138.4000244140625" text="Vehicle Register NO" />
+            <TableColumn fx:id="colDamage" prefWidth="98.4000244140625" text="Damages" />
+            <TableColumn fx:id="colDescription" prefWidth="226.39996337890625" text="Damage Description" />
+        </columns>
+      </TableView>
+      <JFXComboBox fx:id="cmbDamge" layoutX="689.0" layoutY="130.0" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: white;" />
+      <TextArea fx:id="txtdesc" layoutX="689.0" layoutY="210.0" prefHeight="70.0" prefWidth="187.0" />
+      <Label layoutX="689.0" layoutY="106.0" prefHeight="18.0" prefWidth="124.0" text="Vehicle Damage" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="685.0" layoutY="185.0" prefHeight="20.0" prefWidth="178.0" text="Vehicle Damage Description" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="732.0" layoutY="50.0" prefHeight="20.0" prefWidth="178.0" text="Vehicle Damage Status" textFill="GOLD">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="689.0" layoutY="395.0" onAction="#btnAdd" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold;" text="Add" />
+      <JFXButton layoutX="834.0" layoutY="395.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: green;" text="Update" />
+      <JFXButton layoutX="486.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold;" text="confirm" />
+   </children>
+</AnchorPane>

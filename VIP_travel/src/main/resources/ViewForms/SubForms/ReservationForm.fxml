@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.BookingFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="21.0" layoutY="18.0" stroke="#ffc800" strokeType="INSIDE" width="655.0" />
+      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" />
+      <Label layoutX="41.0" layoutY="64.0" prefHeight="18.0" prefWidth="122.0" text="Reservation ID *" textFill="#ff0303">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNIC" layoutX="38.0" layoutY="160.0" onAction="#selectNIC" prefHeight="34.0" prefWidth="198.0" />
+      <TextField fx:id="txtRegNo" editable="false" layoutX="296.0" layoutY="237.0" prefHeight="34.0" prefWidth="198.0" />
+      <Label layoutX="253.0" layoutY="27.0" prefHeight="18.0" prefWidth="191.0" text="Reservation Form" textFill="GOLD">
+         <font>
+            <Font name="Ebrima Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="134.0" prefHeight="18.0" prefWidth="122.0" text="Customer NIC *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbVehicleName" layoutX="38.0" layoutY="237.0" onAction="#vehicleNameOnAction" prefHeight="34.0" prefWidth="198.0" />
+      <Label layoutX="41.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text="Vehicle Name *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="297.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text="Register No *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCostPerDay" editable="false" layoutX="541.0" layoutY="237.0" prefHeight="34.0" prefWidth="107.0" />
+      <Label layoutX="534.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text=" Cost Per Day *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="DateStart" layoutX="38.0" layoutY="308.0" onAction="#StartDateOnAction" prefHeight="34.0" prefWidth="182.0" />
+      <DatePicker fx:id="DateEnd" layoutX="296.0" layoutY="310.0" onAction="#EndDateOnAction" prefHeight="34.0" prefWidth="182.0" />
+      <Label layoutX="45.0" layoutY="284.0" prefHeight="26.0" prefWidth="94.0" text="Start Date *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="284.0" prefHeight="26.0" prefWidth="94.0" text="End Date *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDayCount" layoutX="541.0" layoutY="310.0" prefHeight="34.0" prefWidth="39.0" />
+      <Label layoutX="541.0" layoutY="284.0" prefHeight="18.0" prefWidth="122.0" text="Days Count *" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="691.0" layoutY="18.0" stroke="#ffd700" strokeType="INSIDE" width="290.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="250.0" layoutX="22.0" layoutY="446.0" stroke="#ffd700" strokeType="INSIDE" width="967.0" />
+      <TableView fx:id="tblReservation" layoutX="29.0" layoutY="451.0" prefHeight="238.0" prefWidth="954.0">
+        <columns>
+          <TableColumn fx:id="colResID" prefWidth="135.99994277954102" text="Reservation ID" />
+            <TableColumn fx:id="colRegNo" prefWidth="152.7999725341797" text="Register No" />
+            <TableColumn fx:id="colSDate" minWidth="0.0" prefWidth="138.4000244140625" text="Start Date" />
+            <TableColumn fx:id="colEDate" prefWidth="131.99993896484375" text="End Date" />
+            <TableColumn fx:id="colDays" prefWidth="96.800048828125" text="Days" />
+            <TableColumn fx:id="colFullCost" prefWidth="151.199951171875" text="FULL Cost" />
+            <TableColumn fx:id="colAction" prefWidth="148.0" text="Action " />
+        </columns>
+      </TableView>
+      <Label layoutX="44.0" layoutY="377.0" prefHeight="36.0" prefWidth="157.0" text="Total Cost =" textFill="#48ff00">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTotalCost" layoutX="217.0" layoutY="378.0" prefHeight="34.0" prefWidth="158.0" />
+      <Label layoutX="297.0" layoutY="134.0" prefHeight="18.0" prefWidth="122.0" text="Customer Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="772.0" layoutY="70.0" onAction="#btnAdd" prefHeight="36.0" prefWidth="146.0" style="-fx-background-color: Gold;" text=" Add Booking">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="782.0" layoutY="271.0" onAction="#btnDelete" prefHeight="40.0" prefWidth="172.0" style="-fx-background-color: #e36414;" text="Delete Booking">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="795.0" layoutY="375.0" onAction="#btnPayment" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: gold;" text="Payment Options">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtCusName" editable="false" layoutX="284.0" layoutY="161.0" prefHeight="30.0" prefWidth="182.0" />
+      <JFXButton layoutX="515.0" layoutY="377.0" onAction="#btnConfirm" prefHeight="36.0" prefWidth="130.0" style="-fx-background-color: gold;" text="Add Cart">
+         <font>
+            <Font name="Ebrima Bold" size="17.0" />
+         </font></JFXButton>
+      <ImageView fitHeight="30.0" fitWidth="73.0" layoutX="779.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/confirm%20booking.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

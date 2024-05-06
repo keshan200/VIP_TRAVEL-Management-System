@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="708.0" prefWidth="492.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.EmployeeDdetailFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="101.0" layoutX="30.0" layoutY="578.0" stroke="#fcc600" strokeType="INSIDE" width="438.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="548.0" layoutX="30.0" layoutY="20.0" stroke="#ffbe09" strokeType="INSIDE" width="438.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="68.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/male%20usere.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtuserID" layoutX="121.0" layoutY="249.0" prefHeight="39.0" prefWidth="250.0" />
+      <TextField fx:id="txtid" layoutX="233.0" layoutY="58.0" prefHeight="86.0" prefWidth="184.0" promptText="ssdd" style="-fx-background-color: black;" text="E001">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font></TextField>
+      <TextField fx:id="txtNIC" layoutX="121.0" layoutY="334.0" prefHeight="39.0" prefWidth="250.0" />
+      <Button layoutX="149.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="50.0" prefWidth="194.0" style="-fx-background-color: #fcc600;" text="         Register Now">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Button>
+      <TextField fx:id="txtName" layoutX="121.0" layoutY="421.0" prefHeight="39.0" prefWidth="250.0" />
+      <TextField fx:id="txtAdress" layoutX="121.0" layoutY="503.0" prefHeight="39.0" prefWidth="250.0" />
+      <Label layoutX="122.0" layoutY="220.0" text="Enter User ID *" textFill="#fcc600">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="121.0" layoutY="308.0" text="NIC *" textFill="#fcc600">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="121.0" layoutY="397.0" text="Name *" textFill="#fcc600">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="121.0" layoutY="477.0" text="Address *" textFill="#fcc600">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="39.0" fitWidth="46.0" layoutX="155.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/registerNow.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

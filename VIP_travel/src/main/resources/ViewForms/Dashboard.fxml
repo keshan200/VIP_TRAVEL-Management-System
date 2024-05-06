@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.MeshView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="772.0" prefWidth="1236.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.DashboardController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="776.0" layoutY="-4.0" stroke="#fcb101" strokeType="INSIDE" strokeWidth="2.0" width="242.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="21.0" layoutY="168.0" stroke="#f2d91e" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="144.0" fitWidth="232.0" layoutX="5.0" layoutY="8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Images/logo%20copy.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="240.0" layoutY="-1.0" stroke="#eab509" strokeType="INSIDE" strokeWidth="2.0" width="1006.0" />
+      <Label fx:id="lblName" layoutX="470.0" layoutY="12.0" prefHeight="38.0" prefWidth="530.0" text="Welcome Keshan" textFill="#fffafa">
+         <font>
+            <Font name="Sylfaen" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="417.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/userProfile_white.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="1115.0" layoutY="12.0" onAction="#btnLogoutOnAction" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: red;" text="      LogOut">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1125.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logout.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="35.0" layoutY="262.0" onAction="#btnVehicleOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Vehicles">
+         <font>
+            <Font name="Ebrima Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="49.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/car.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="35.0" layoutY="330.0" onAction="#btnReservationOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="        Reservation">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="49.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/bookings.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblDate" layoutX="946.0" layoutY="12.0" prefHeight="38.0" prefWidth="125.0" text="2024 .04.17" textFill="#37ff00">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="884.0" layoutY="14.0" prefHeight="32.0" prefWidth="62.0" text="Date :" textFill="#fff6f6">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="35.0" layoutY="194.0" onAction="#btnDashboard" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="       Dashboard">
+         <font>
+            <Font name="Ebrima Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="49.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/DashboardIcon.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="AncMain" layoutX="243.0" layoutY="63.0" prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #011028;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="274.0" layoutX="53.0" layoutY="33.0" stroke="#e10808" strokeType="INSIDE" width="859.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ee9b00" height="116.0" layoutX="80.0" layoutY="53.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="242.0" />
+            <Label layoutX="128.0" layoutY="58.0" prefHeight="32.0" prefWidth="146.0" text="Vehicle Count">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="94.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/carIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="38.0" layoutX="179.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/suvicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="263.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/vanIcon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCar" layoutX="96.0" layoutY="128.0" prefHeight="25.0" prefWidth="38.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSuv" layoutX="179.0" layoutY="126.0" prefHeight="43.0" prefWidth="38.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblVan" layoutX="269.0" layoutY="126.0" prefHeight="43.0" prefWidth="38.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffa9" height="116.0" layoutX="400.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Label layoutX="409.0" layoutY="54.0" prefHeight="39.0" prefWidth="181.0" text="Customers Count">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCustomer" layoutX="507.0" layoutY="92.0" prefHeight="56.0" prefWidth="47.0" text="56">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a663cc" height="116.0" layoutX="683.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Label layoutX="703.0" layoutY="54.0" prefHeight="39.0" prefWidth="171.0" text="Employe Count">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="716.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/employee.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblEmploye" layoutX="802.0" layoutY="100.0" prefHeight="39.0" prefWidth="54.0" text="20">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="79.0" fitWidth="47.0" layoutX="431.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/icons8-customero+oloured-100.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tblVehicleAvailable" layoutX="47.0" layoutY="402.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green;">
+              <columns>
+                <TableColumn fx:id="colAvailble" prefWidth="148.7999267578125" text="Available Vehicles" />
+                <TableColumn fx:id="colCount" prefWidth="82.39999389648438" text="Count" />
+                  <TableColumn fx:id="colPrice" prefWidth="126.39999999999998" text="Price per Day" />
+              </columns>
+            </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5179e" height="56.0" layoutX="82.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" width="232.0" />
+            <Label layoutX="94.0" layoutY="231.0" prefHeight="30.0" prefWidth="146.0" text="Total Bookings">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBookingCount" layoutX="249.0" layoutY="227.0" prefHeight="39.0" prefWidth="50.0" text="25">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <MeshView layoutX="424.0" layoutY="275.0" />
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="36.0" layoutY="397.0" onAction="#btnCustomersOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Customers">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="38.0" fitWidth="31.0" layoutX="46.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/customer.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="36.0" layoutY="464.0" onAction="#btnReturn" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Vehicle Returns">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="46.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/return.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
