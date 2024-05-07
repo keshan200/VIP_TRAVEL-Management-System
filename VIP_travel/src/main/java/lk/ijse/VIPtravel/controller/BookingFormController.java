@@ -81,7 +81,7 @@ public class BookingFormController {
         getCurrentBookingId();
         calculateNetTotal();
         setCellVFactory();
-       loadAllReservations();
+      // loadAllReservations();
     }
 
 
@@ -227,7 +227,7 @@ public class BookingFormController {
     @FXML
     void btnConfirm(ActionEvent event) {
 
-       String resID = txtReservationID.getText();
+        String resID = txtReservationID.getText();
         String regNo = txtRegNo.getText();
         LocalDate startDate = DateStart.getValue();
         LocalDate endDate = DateEnd.getValue();
@@ -284,33 +284,8 @@ public class BookingFormController {
 
 
 
-    private void loadAllReservations() {
-
-        List<CartTM> cartList = FXCollections.observableArrayList();
-
-        try {
-            List<BookingDetailsModle> allBookingDetails = ReservationRepo.getAllBookingDetails();
 
 
-            for (BookingDetailsModle bookingDetails : allBookingDetails) {
-                String reservationID = bookingDetails.getReservationID();
-                String regNo = bookingDetails.getRegNo();
-                LocalDate startDate = bookingDetails.getStartDate();
-                LocalDate endDate = bookingDetails.getEndDate();
-                int daysCount = bookingDetails.getDaysCount();
-                double totalCost = bookingDetails.getTotalCost();
-
-
-                CartTM cartItem = new CartTM(reservationID, regNo, startDate, endDate, daysCount, totalCost, new JFXButton("❌"));
-                cartList.add(cartItem);
-            }
-
-            tblReservation.setItems(FXCollections.observableArrayList(cartList));
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
     @FXML
@@ -362,7 +337,7 @@ public class BookingFormController {
             if (isPlaced) {
                 resList.clear();
                 clearFields();
-                loadAllReservations();
+               // loadAllReservations();
                 new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();

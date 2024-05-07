@@ -52,31 +52,7 @@ public class ReservationRepo {
 
 
 
-    public static List<BookingDetailsModle> getAllBookingDetails() throws SQLException {
 
-        List<BookingDetailsModle> bookingDetailsList = new ArrayList<>();
-
-        String sql = "SELECT bd.reservationID, bd.regNo, bd.fullCost, bd.startDate, bd.endDate, bd.Days FROM bookingDetails bd JOIN reservation r ON bd.reservationID = r.reservationID";
-
-        Connection connection = DBconnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-            while (resultSet.next()) {
-                String reservationID = resultSet.getString("reservationID");
-                String regNo = resultSet.getString("regNo");
-                double fullCost = resultSet.getDouble("fullCost");
-                LocalDate startDate = resultSet.getDate("startDate").toLocalDate();
-                LocalDate endDate = resultSet.getDate("endDate").toLocalDate();
-                int days = resultSet.getInt("Days");
-
-                BookingDetailsModle bookingDetails = new BookingDetailsModle(regNo, reservationID, startDate, endDate, fullCost, days);
-                bookingDetailsList.add(bookingDetails);
-            }
-        return bookingDetailsList;
-
-    }
 
 }
 

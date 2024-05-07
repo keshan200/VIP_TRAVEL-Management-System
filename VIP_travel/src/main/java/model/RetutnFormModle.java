@@ -11,10 +11,9 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 
-public class ReturnFromModle {
 
+public class RetutnFormModle {
 
-
-     private  ReturnModle retrun;
-    private List<ReturnDetailsModle> ResturnList;
+    private ReturnModle Return;
+    private List<ReturnDetailsModle> returnList;
 }

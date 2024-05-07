@@ -81,6 +81,8 @@ private void ShowSelectedCustomerDetails(){
 }
    private  void loadAllCustomers(){
 
+
+
        ObservableList<CustomerTM> obList = FXCollections.observableArrayList();
 
        try {

@@ -1,30 +1,32 @@
 package repository;
 
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
-import model.BookingFormModle;
-import model.ReturnFromModle;
+import model.RetutnFormModle;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ReturnFormRepo {
 
-/**/
-    public static boolean placeReturn(ReturnFromModle b) throws SQLException {
+
+
+
+    public static boolean SetReturn(RetutnFormModle ret) throws SQLException {
+
         Connection connection = DBconnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 
 
+
         try {
-            boolean isReturnSaved = ReturnRepo.Save(b.getRetrun());
+            boolean isReturnSaved = ReturnRepo.save(ret.getReturn());
             if (isReturnSaved) {
-                boolean isReturnDetailSaved = ReturnDetailsRepo.save(b.getResturnList());
-                if (isReturnDetailSaved) {
+                boolean isReturnDetailsSaved = ReturnDetailsRepo.save(ret.getReturnList());
+                if (isReturnDetailsSaved) {
                     connection.commit();
                     return true;
                 }
             }
-
             connection.rollback();
             return false;
         } catch (Exception e) {
@@ -34,4 +36,10 @@ public class ReturnFormRepo {
             connection.setAutoCommit(true);
         }
     }
-}
+
+
+            }
+
+
+
+

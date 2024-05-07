@@ -8,11 +8,14 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @NoArgsConstructor
-@Data
 @AllArgsConstructor
+@Data
 public class ReturnDetailsModle {
-    private String ReturnID;
-    private String RegNo;
+
+    private String returnID;// Add vehicleID field
+    private String regNo;
 
 
+    public ReturnDetailsModle(String returnID, String status, LocalDate returnDate, String nic, String damages, String description, String regNo) {
+    }
 }

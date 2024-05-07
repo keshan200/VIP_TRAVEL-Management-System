@@ -1,17 +1,21 @@
 package lk.ijse.VIPtravel.controller;
 
+
+
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.*;
-import model.TM.CartTM;
+import model.ReturnDetailsModle;
+import model.ReturnModle;
+import model.RetutnFormModle;
 import model.TM.ReturnTM;
-import repository.BookingFormRepo;
-import repository.PaymentRepo;
+import model.VehicleModle;
 import repository.ReturnFormRepo;
 import repository.ReturnRepo;
 
@@ -19,6 +23,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ReturnFormController {
 
@@ -53,6 +58,9 @@ public class ReturnFormController {
     private TableColumn<?, ?> colStatus;
 
     @FXML
+    private TableColumn<?, ?> colac;
+
+    @FXML
     private TableView<ReturnTM> tblReturn;
 
     @FXML
@@ -68,115 +76,88 @@ public class ReturnFormController {
     private TextField txtReturn;
 
     @FXML
-    private TextField txtvehicle;
-
-    @FXML
     private TextArea txtdesc;
 
+    @FXML
+    private TextField txtvehicle;
 
-    ObservableList<ReturnTM> retList = FXCollections.observableArrayList();
+    ObservableList<ReturnTM>retList = FXCollections.observableArrayList();
+
 
 
 
 
 
     public  void initialize(){
-
-        getCurrentID();
-        setCmbDamage();
         setCmbStatus();
-        loadAllReturns();
-      setCellValues();
+        setCmbDamage();
+        getCurrentID();
+        setCellVFactory();
+
     }
 
 
 
 
-/*
-        String resID = txtReservationID.getText();
-        String NIC = txtNIC.getText();
-
-        List<BookingDetailsModle> bookingList = new ArrayList<>();
-
-
-        for (CartTM tm : tblReservation.getItems()) {
-            BookingDetailsModle od = new BookingDetailsModle(
-                    tm.getRegNo(),
-                    tm.getReservationID(),
-                    tm.getStartDate(),
-                    tm.getEndDate(),
-                    tm.getTotalCost(),
-                    tm.getDaysCount()
-            );
-            bookingList.add(od);
-        }
-
-
-        ReservationModle reservationModle = new ReservationModle(resID, NIC);
-        BookingFormModle bm = new BookingFormModle(reservationModle, bookingList);
-
-        try {
-            boolean isPlaced = BookingFormRepo.placeBooking(bm);
-            if (isPlaced) {
-                resList.clear();
-                clearFields();
-                loadAllReservations();
-                new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+    private void setCellVFactory() {
+        colReturnID.setCellValueFactory(new PropertyValueFactory<>("returnID"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colRetDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+        colNIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
+        colRegNo.setCellValueFactory(new PropertyValueFactory<>("regNo"));
+        colDamage.setCellValueFactory(new PropertyValueFactory<>("damages"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        colac.setCellValueFactory(new PropertyValueFactory<>("remove"));
     }
-*/
+
+
+
+
 
     @FXML
     void btnAdd(ActionEvent event) {
 
-        String returnID = txtReturn.getText();
-        LocalDate date = ReturnDate.getValue();
-        String NIC = txtNIC.getText();
+        String retID = txtReturn.getText();
         String status = cmbStatus.getValue();
+        LocalDate date = ReturnDate.getValue();
+        String nic = txtNIC.getText();
         String damage = cmbDamge.getValue();
         String desc = txtdesc.getText();
 
-        List<ReturnDetailsModle> retList = new ArrayList<>();
 
+        List<ReturnDetailsModle>RetunList = new ArrayList<>();
 
         for (ReturnTM tm : tblReturn.getItems()) {
-           ReturnDetailsModle od = new ReturnDetailsModle(
-                   tm.getReturnID(),
-                   tm.getRegNO()
+            ReturnDetailsModle R = new ReturnDetailsModle(
 
+                    tm.getReturnID(),
+                    tm.getRegNo()
 
             );
-            retList.add(od);
+
+            RetunList.add(R);
+
         }
 
-        ReturnModle retunModel = new ReturnModle(returnID,date,NIC,status,damage,desc);
-        ReturnFromModle bm = new ReturnFromModle(retunModel, retList);
+        ReturnModle returnModle = new ReturnModle(retID,status,date,nic,damage,desc);
+        RetutnFormModle retutnFormModle = new RetutnFormModle(returnModle, RetunList);
 
-        try {
-            boolean isPlaced = ReturnFormRepo.placeReturn(bm);
-            if (isPlaced) {
-                retList.clear();
-                //clearFields();
-                 loadAllReturns();
-                  new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+          try {
+              boolean isOk = ReturnFormRepo.SetReturn(retutnFormModle);
+              if (isOk ) {
+                  retList.clear();
+
+                  new Alert(Alert.AlertType.CONFIRMATION,"Return Sucsess").show();
+
+              }else {
+                  new Alert(Alert.AlertType.ERROR,"Return Sucsess").show();
+              }
+
+          } catch (SQLException e) {
+              throw new RuntimeException(e);
+          }
+
     }
-
-
-
-
-
-
 
     @FXML
     void btnConfirm(ActionEvent event) {
@@ -185,29 +166,51 @@ public class ReturnFormController {
         String status = cmbStatus.getValue();
         LocalDate date = ReturnDate.getValue();
         String NIC = txtNIC.getText();
-        String regNO = txtRegNO.getText();
-        String damage = cmbDamge.getValue();
+        String regNo = txtRegNO.getText();
+        String damages = cmbDamge.getValue();
         String desc = txtdesc.getText();
 
+        JFXButton remove = new JFXButton("❌");
+        remove.setCursor(Cursor.HAND);
+        remove.setStyle("-fx-text-fill: red;");
+        remove.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+            if (type.orElse(no) == yes) {
+                int selectedIndex = tblReturn.getSelectionModel().getSelectedIndex();
+                retList.remove(selectedIndex);
+
+            }
+        });
 
 
         if (!retList.isEmpty()) {
-            for (int i = 0; i < retList.size(); i++) {
-                if (regNO.equals(colRegNo.getCellData(i))) {
-                    ReturnTM tm = retList.get(i);
-                    tblReturn.refresh();
-                    return;
-                }
-            }
-        }
+          for(int i =0;i< retList.size();i++){
+              if (regNo.equals(colRegNo.getCellData(i))) {
+                  ReturnTM tm = retList.get(i);
+                  tblReturn.refresh();
+                  return;
+              }
 
-        ReturnTM tm = new ReturnTM(returnID, status, date, NIC, regNO, damage, desc);
+          }
+        }
+ReturnTM tm = new ReturnTM(returnID,status,date,NIC,regNo,damages,desc,remove);
         retList.add(tm);
         tblReturn.setItems(retList);
 
     }
 
+    @FXML
+    void btnUpdate(ActionEvent event) {
 
+    }
+
+    @FXML
+    void setReturnDate(ActionEvent event) {
+        String value = String.valueOf(ReturnDate.getValue());
+
+    }
 
 
 
@@ -227,51 +230,6 @@ public class ReturnFormController {
 
     }
 
-
-
-    private void setCellValues() {
-        colReturnID.setCellValueFactory(new PropertyValueFactory<>("returnID"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("states"));
-        colRetDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colNIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
-        colRegNo.setCellValueFactory(new PropertyValueFactory<>("regNO"));
-        colDamage.setCellValueFactory(new PropertyValueFactory<>("damge"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("desc"));
-    }
-
-    private void loadAllReturns() {
-        try {
-            List<ReturnModle> returnsList = ReturnRepo.getAllReturns();
-            ObservableList<ReturnTM> obList = FXCollections.observableArrayList();
-
-            for (ReturnModle returnModel : returnsList) {
-                ReturnTM tm = new ReturnTM(
-                        returnModel.getReturnID(),
-                        returnModel.getStates(),
-                        returnModel.getDate(),
-                        returnModel.getNIC(),
-                        returnModel.getRegNo(),
-                        returnModel.getDamge(),
-                        returnModel.getDesc()
-                );
-                obList.add(tm);
-            }
-            tblReturn.setItems(obList);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Error loading returns: " + e.getMessage()).show();
-        }
-    }
-
-    @FXML
-    void btnUpdate(ActionEvent event) {
-
-    }
-
-    @FXML
-    void setReturnDate(ActionEvent event) {
-        String value = String.valueOf(ReturnDate.getValue());
-
-    }
 
 
     public String generateNextVehicleID(String curentID){
@@ -294,7 +252,7 @@ public class ReturnFormController {
     }
 
 
-
-
-
 }
+
+
+
