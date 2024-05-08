@@ -18,13 +18,13 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="241.0" layoutX="14.0" layoutY="458.0" stroke="GOLD" strokeType="INSIDE" width="970.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="70.0" layoutX="668.0" layoutY="377.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="318.0" layoutX="665.0" layoutY="40.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
-      <TextField fx:id="txtReturn" layoutX="71.0" layoutY="130.0" prefHeight="34.0" prefWidth="198.0" />
-      <TextField fx:id="txtNIC" layoutX="71.0" layoutY="210.0" prefHeight="34.0" prefWidth="198.0" />
-      <TextField fx:id="txtRegNO" layoutX="71.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" />
-      <DatePicker fx:id="ReturnDate" layoutX="394.0" layoutY="130.0" onAction="#setReturnDate" prefHeight="34.0" prefWidth="198.0" />
-      <JFXComboBox fx:id="cmbStatus" layoutX="71.0" layoutY="385.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: white;" />
-      <TextField fx:id="txtvehicle" editable="false" layoutX="394.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" />
-      <TextField fx:id="txtName" editable="false" layoutX="394.0" layoutY="210.0" prefHeight="34.0" prefWidth="198.0" />
+      <TextField fx:id="txtReturn" layoutX="71.0" layoutY="130.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNIC" layoutX="71.0" layoutY="210.0" onAction="#nicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtRegNO" layoutX="71.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <DatePicker fx:id="ReturnDate" layoutX="394.0" layoutY="130.0" onAction="#setReturnDate" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <JFXComboBox fx:id="cmbStatus" layoutX="71.0" layoutY="385.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+      <TextField fx:id="txtvehicle" editable="false" layoutX="394.0" layoutY="296.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtName" editable="false" layoutX="394.0" layoutY="210.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
       <Label layoutX="71.0" layoutY="185.0" prefHeight="18.0" prefWidth="124.0" text="Customer NIC" textFill="WHITE">
          <font>
             <Font size="14.0" />
@@ -78,7 +78,7 @@
         </columns>
       </TableView>
       <JFXComboBox fx:id="cmbDamge" layoutX="689.0" layoutY="130.0" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: white;" />
-      <TextArea fx:id="txtdesc" layoutX="689.0" layoutY="210.0" prefHeight="70.0" prefWidth="187.0" />
+      <TextArea fx:id="txtdesc" layoutX="689.0" layoutY="210.0" prefHeight="70.0" prefWidth="187.0" style="-fx-background-radius: 20;" />
       <Label layoutX="689.0" layoutY="106.0" prefHeight="18.0" prefWidth="124.0" text="Vehicle Damage" textFill="WHITE">
          <font>
             <Font size="14.0" />
@@ -94,8 +94,11 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <JFXButton layoutX="689.0" layoutY="395.0" onAction="#btnAdd" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-border-radius: blue;" text="Add" />
-      <JFXButton layoutX="834.0" layoutY="395.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: green;" text="Update" />
-      <JFXButton layoutX="486.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold;" text="confirm" />
+      <JFXButton layoutX="689.0" layoutY="395.0" onAction="#btnAdd" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-border-radius: 20; -fx-background-radius: 20;" text="Add" />
+      <JFXButton layoutX="834.0" layoutY="395.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Update" />
+      <JFXButton layoutX="486.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="Add Cart">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

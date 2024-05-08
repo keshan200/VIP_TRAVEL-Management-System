@@ -11,11 +11,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
 import model.TM.CartTM;
 import model.TM.ReturnTM;
 import repository.ReservationRepo;
+import repository.ReturnDetailsRepo;
 import repository.ReturnFormRepo;
 import repository.ReturnRepo;
 
@@ -97,9 +99,43 @@ public class ReturnFormController {
         getCurrentID();
         setCellVFactory();
  loadAllReservations();
+
+
+
     }
 
 
+
+    @FXML
+    void nicOnAction(ActionEvent event) {
+        try {
+            loadReturnsForCustomer();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Error loading customer details: " + e.getMessage()).show();
+        }
+    }
+
+    private void loadReturnsForCustomer() throws SQLException {
+        String nic = txtNIC.getText();
+        if (!nic.isEmpty()) {
+            List<ReturnTM> returnList = new ArrayList<>();
+            List<ReturnDetailsModle> returnDetailsList = ReturnDetailsRepo.getReturnsForCustomer(nic);
+            for (ReturnDetailsModle returnDetails : returnDetailsList) {
+                ReturnTM returnTM = new ReturnTM(
+                        returnDetails.getReturnID(),
+                        returnDetails.getStatus(),
+                        returnDetails.getReturnDate(),
+                        returnDetails.getNIC(),
+                        returnDetails.getRegNo(),
+                        returnDetails.getDamages(),
+                        returnDetails.getDesc(),
+                        new JFXButton("❌")
+                );
+                returnList.add(returnTM);
+            }
+            tblReturn.setItems(FXCollections.observableArrayList(returnList));
+        }
+    }
 
 
     private void setCellVFactory() {

@@ -1,5 +1,6 @@
 package lk.ijse.VIPtravel.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -66,7 +67,10 @@ public class CustomerFormController {
        loadAllCustomers();
        ShowSelectedCustomerDetails();
        getCurrentID();
+
    }
+
+
 
 
 private void ShowSelectedCustomerDetails(){
@@ -147,20 +151,25 @@ private  void setcellValues(){
         int telNo = Integer.parseInt(txtTelNO.getText());
         String adrs = txtAddrs.getText();
 
-        CustomerModle customerModle = new CustomerModle(customerID,NIC,name,telNo,adrs);
+        CustomerModle customerModle = new CustomerModle(customerID, NIC, name, telNo, adrs);
+        boolean Vaild = isValied();
         try {
+            if (Vaild) {
 
-            boolean isSaved = CustomerRepo.Add(customerModle);
-            System.out.println(customerModle);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved!!").show();
-                clearFields();
-                loadAllCustomers();
+
+                boolean isSaved = CustomerRepo.Add(customerModle);
+                System.out.println(customerModle);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer Saved!!").show();
+                    clearFields();
+                    loadAllCustomers();
+                }
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch(SQLException e){
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
-    }
+
 
     @FXML
     void btnClear(ActionEvent event) {
@@ -223,17 +232,11 @@ private  void setcellValues(){
 
 
     public boolean isValied(){
-        if (!Regex.setTextColour(TextField.ID,txtID)) return false;
-        if (!Regex.setTextColor(TextField.EMAIL,txtEmail)) return false;
+        if (!Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO, txtTelNO)) return false;
         return true;
     }
 
-    @FXML
-    void telNoAction(KeyEvent event) {
 
-        Regex.setTextColor(TextField.,txtID);
-
-    }
 
 
     @FXML
@@ -256,4 +259,8 @@ private  void setcellValues(){
         }
     }
 
+    public void telNoAction(javafx.scene.input.KeyEvent keyEvent) {
+
+        Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO,txtTelNO);
+    }
 }

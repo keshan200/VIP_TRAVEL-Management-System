@@ -28,7 +28,7 @@
             <Image url="@../Images/logo%20copy.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtUser" layoutX="417.0" layoutY="126.0" prefHeight="31.0" prefWidth="194.0" promptText="User ID">
+      <TextField fx:id="txtUser" layoutX="417.0" layoutY="126.0" prefHeight="31.0" prefWidth="194.0" promptText="User ID" style="-fx-background-radius: 15;">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></TextField>
@@ -52,8 +52,8 @@
             <Image url="@../Images/register.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="txtPassword" layoutX="417.0" layoutY="185.0" prefHeight="31.0" prefWidth="194.0" />
-      <JFXButton layoutX="427.0" layoutY="246.0" onAction="#btnLogin" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: gold;" text="      Login">
+      <PasswordField fx:id="txtPassword" layoutX="417.0" layoutY="185.0" prefHeight="31.0" prefWidth="194.0" style="-fx-background-radius: 15;" />
+      <JFXButton layoutX="427.0" layoutY="246.0" onAction="#btnLogin" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="      Login">
          <font>
             <Font name="Ebrima Bold" size="24.0" />
          </font>

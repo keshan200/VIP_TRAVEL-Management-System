@@ -52,7 +52,7 @@ public class ReservationRepo {
 
         List<BookingDetailsModle> bookingDetailsList = new ArrayList<>();
 
-        String sql = "SELECT bd.reservationID, bd.regNo, bd.fullCost, bd.startDate, bd.endDate, bd.Days FROM bookingDetails bd JOIN reservation r ON bd.reservationID = r.reservationID";
+        String sql = "SELECT regNo, reservationID, fullCost, startDate, endDate, Days FROM bookingDetails";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);

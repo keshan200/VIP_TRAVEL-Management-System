@@ -31,7 +31,7 @@
             <Image url="@../Images/userProfile_white.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="1115.0" layoutY="12.0" onAction="#btnLogoutOnAction" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: red;" text="      LogOut">
+      <JFXButton layoutX="1115.0" layoutY="12.0" onAction="#btnLogoutOnAction" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="      LogOut">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -41,7 +41,7 @@
             <Image url="@../Images/logout.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="35.0" layoutY="262.0" onAction="#btnVehicleOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Vehicles">
+      <JFXButton layoutX="35.0" layoutY="262.0" onAction="#btnVehicleOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700; -fx-background-radius: 10;" text="     Vehicles">
          <font>
             <Font name="Ebrima Bold" size="17.0" />
          </font>
@@ -51,7 +51,7 @@
             <Image url="@../Images/car.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="35.0" layoutY="330.0" onAction="#btnReservationOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="        Reservation">
+      <JFXButton layoutX="35.0" layoutY="330.0" onAction="#btnReservationOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700; -fx-background-radius: 10;" text="        Reservation">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -72,7 +72,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <JFXButton layoutX="35.0" layoutY="194.0" onAction="#btnDashboard" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="       Dashboard">
+      <JFXButton layoutX="35.0" layoutY="194.0" onAction="#btnDashboard" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700; -fx-background-radius: 10;" text="       Dashboard">
          <font>
             <Font name="Ebrima Bold" size="17.0" />
          </font>
@@ -174,7 +174,7 @@
             <MeshView layoutX="424.0" layoutY="275.0" />
          </children>
       </AnchorPane>
-      <JFXButton layoutX="36.0" layoutY="397.0" onAction="#btnCustomersOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Customers">
+      <JFXButton layoutX="36.0" layoutY="397.0" onAction="#btnCustomersOnAction" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700; -fx-background-radius: 10;" text="     Customers">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -184,7 +184,7 @@
             <Image url="@../Images/customer.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="36.0" layoutY="464.0" onAction="#btnReturn" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700;" text="     Vehicle Returns">
+      <JFXButton layoutX="36.0" layoutY="464.0" onAction="#btnReturn" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #efa700; -fx-background-radius: 10;" text="     Vehicle Returns">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
