@@ -19,6 +19,5 @@ public class ReturnModle {
     private String damages;
     private String desc;
 
-    public ReturnModle(String returnID, String status, LocalDate returnDate, String nic, String damages, String description, String regNo) {
-    }
+
 }

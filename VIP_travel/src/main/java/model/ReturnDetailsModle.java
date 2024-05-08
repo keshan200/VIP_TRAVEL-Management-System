@@ -12,10 +12,21 @@ import java.time.LocalDate;
 @Data
 public class ReturnDetailsModle {
 
-    private String returnID;// Add vehicleID field
-    private String regNo;
+    //private String returnID;// Add vehicleID field
+    //private String regNo;
 
 
-    public ReturnDetailsModle(String returnID, String status, LocalDate returnDate, String nic, String damages, String description, String regNo) {
+    private String returnID;
+    private String status;
+    private LocalDate returnDate;
+    private String NIC;
+    private  String regNo;
+    private String damages;
+    private String desc;
+
+
+    public ReturnDetailsModle(String returnID, String regNo) {
+        this.returnID = returnID;
+        this.regNo = regNo;
     }
 }

@@ -11,14 +11,17 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.ReturnDetailsModle;
-import model.ReturnModle;
-import model.RetutnFormModle;
+import lk.ijse.VIPtravel.DBconnection.DBconnection;
+import model.*;
+import model.TM.CartTM;
 import model.TM.ReturnTM;
-import model.VehicleModle;
+import repository.ReservationRepo;
 import repository.ReturnFormRepo;
 import repository.ReturnRepo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -93,7 +96,7 @@ public class ReturnFormController {
         setCmbDamage();
         getCurrentID();
         setCellVFactory();
-
+ loadAllReservations();
     }
 
 
@@ -250,6 +253,38 @@ ReturnTM tm = new ReturnTM(returnID,status,date,NIC,regNo,damages,desc,remove);
             throw new RuntimeException(e);
         }
     }
+
+
+
+    private void loadAllReservations() {
+        List<ReturnTM> RetList = FXCollections.observableArrayList();
+
+        try {
+            List<ReturnDetailsModle> AllReturns = ReturnRepo.getAllReturns();
+
+
+            for (ReturnDetailsModle ret : AllReturns) {
+                String ReturnID = ret.getReturnID();
+                String Status = ret.getStatus();
+                LocalDate rDate = ret.getReturnDate();
+                String NIC = ret.getNIC();
+                String regNo = ret.getRegNo();
+                String damages = ret.getDamages();
+                String desc = ret.getDesc();
+
+
+                ReturnTM rett = new ReturnTM(ReturnID,Status,rDate,NIC,regNo,damages,desc,new JFXButton("❌"));
+                RetList.add(rett);
+            }
+
+            tblReturn.setItems(FXCollections.observableArrayList(RetList));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 
 }

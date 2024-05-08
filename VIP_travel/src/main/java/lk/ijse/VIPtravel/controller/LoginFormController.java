@@ -92,26 +92,18 @@ public class LoginFormController {
 
     public void btnRegister(ActionEvent event) throws IOException {
 
-        /*FXMLLoader Regloader = new FXMLLoader(getClass().getResource("/ViewForms/RegisterFrom.fxml"));
+        FXMLLoader Regloader = new FXMLLoader(getClass().getResource("/ViewForms/RegisterFrom.fxml"));
         Parent Regload = Regloader.load();
 
         Stage stage = new Stage();
         stage.setScene(new Scene(Regload));
         stage.setTitle("Register Form");
-        stage.show();*/
-
-
-       /* Stage window = (Stage) txtUser.getScene().getWindow();
-        window.close();*/
-
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/ViewForms/RegisterFrom.fxml"));
-
-        Scene scene = new Scene(rootNode);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-
-        stage.setTitle("Registration Form");
         stage.show();
+
+
+        Stage window = (Stage) txtUser.getScene().getWindow();
+        window.close();
+
 
 
     }

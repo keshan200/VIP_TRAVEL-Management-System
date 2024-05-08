@@ -12,13 +12,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
 import model.TM.CartTM;
+import model.TM.VehicleTM;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import repository.BookingDetailsRepo;
 import repository.BookingFormRepo;
 import repository.VehicleRepo;
 import repository.ReservationRepo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -81,8 +89,31 @@ public class BookingFormController {
         getCurrentBookingId();
         calculateNetTotal();
         setCellVFactory();
-      // loadAllReservations();
+      loadAllReservations();
+    //  showSelectedVehicleDetails();
     }
+
+
+
+
+  /*  private void showSelectedVehicleDetails() {
+        CartTM bookings = tblReservation.getSelectionModel().getSelectedItem();
+        tblReservation.setOnMouseClicked(event -> showSelectedVehicleDetails());
+        if (bookings != null) {
+            txtReservationID.setText(bookings.getReservationID());
+            txtNIC.setText(bookings.getNIC());
+            txtCusName.setText(bookings.getCusName());
+            cmbVehicleName.setValue(bookings.getVehicleName());
+            txtRegNo.setText(bookings.getRegNo());
+            txtCostPerDay.setText(String.valueOf(bookings.getCostPerDay()));
+            DateStart.setValue(LocalDate.parse(String.valueOf(bookings.getStartDate())));
+            DateEnd.setValue(bookings.getEndDate());
+            txtDayCount.setText(String.valueOf(bookings.getDaysCount()));
+            txtTotalCost.setText(String.valueOf(bookings.getTotalCost()));
+
+        }
+    }*/
+
 
 
     private void setCellVFactory() {
@@ -231,6 +262,7 @@ public class BookingFormController {
         String regNo = txtRegNo.getText();
         LocalDate startDate = DateStart.getValue();
         LocalDate endDate = DateEnd.getValue();
+
         int days = Integer.parseInt(txtDayCount.getText());
         double costPerDay = Double.parseDouble(txtCostPerDay.getText());
         double totalCost = costPerDay * days;
@@ -289,7 +321,20 @@ public class BookingFormController {
 
 
     @FXML
-    void btnDelete(ActionEvent event) {
+    void btnPrintBill(ActionEvent event) throws JRException, SQLException {
+
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/BookingBill2.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        String NIC = txtNIC.getText();
+        data.put("count",NIC);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+
+
 
     }
 
@@ -337,13 +382,41 @@ public class BookingFormController {
             if (isPlaced) {
                 resList.clear();
                 clearFields();
-               // loadAllReservations();
+                loadAllReservations();
                 new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    private void loadAllReservations() {
+        List<CartTM> cartList = FXCollections.observableArrayList();
+
+        try {
+            List<BookingDetailsModle> allBookingDetails = ReservationRepo.getAllBookingDetails();
+
+
+            for (BookingDetailsModle bookingDetails : allBookingDetails) {
+                String reservationID = bookingDetails.getReservationID();
+                String regNo = bookingDetails.getRegNo();
+                LocalDate startDate = bookingDetails.getStartDate();
+                LocalDate endDate = bookingDetails.getEndDate();
+                int daysCount = bookingDetails.getDaysCount();
+                double totalCost = bookingDetails.getTotalCost();
+
+
+                CartTM cartItem = new CartTM(reservationID, regNo, startDate, endDate, daysCount, totalCost, new JFXButton("❌"));
+                cartList.add(cartItem);
+            }
+
+            tblReservation.setItems(FXCollections.observableArrayList(cartList));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }

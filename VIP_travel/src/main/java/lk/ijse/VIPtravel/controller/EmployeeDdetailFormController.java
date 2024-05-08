@@ -10,6 +10,7 @@ import java.awt.*;
 import java.sql.SQLException;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import repository.RegisterFromRepo;
 import repository.RegisterRepo;
 
 public class EmployeeDdetailFormController {
@@ -30,13 +31,19 @@ public class EmployeeDdetailFormController {
     private TextField txtuserID;
 
 
+    @FXML
+    private TextField txtPassword;
 
-  public void initialize() {
+    @FXML
+    private TextField txtemail;
+
+
+    public void initialize() {
 
         getCurrentempID();
     }
 
-    private void getCurrentempID(){
+    private void getCurrentempID() {
 
         try {
             String currentId = EmployeeDetailsRepo.getCurentempID();
@@ -50,7 +57,6 @@ public class EmployeeDdetailFormController {
     }
 
 
-
     private String generateNextEmpID(String currentId) {
         if (currentId != null) {
             String[] split = currentId.split("E");
@@ -60,7 +66,9 @@ public class EmployeeDdetailFormController {
         return "E001";
     }
 
-    public void btnRegister(ActionEvent event) {
+
+
+    public void btnRegister(ActionEvent event) throws SQLException {
 
         String empID = txtid.getText();
         String NIC = txtNIC.getText();
@@ -82,6 +90,28 @@ public class EmployeeDdetailFormController {
             throw new RuntimeException(e);
         }
 
-
     }
+
+      /*  String empID = txtid.getText();
+        String NIC = txtNIC.getText();
+        String name = txtName.getText();
+        String address = txtAdress.getText();
+        String userID = txtuserID.getText();
+        String pass = txtPassword.getText();
+        String email = txtemail.getText();
+
+        try {
+            RegisterFromRepo.addEmployee(empID, NIC, name, address, userID, pass, email);
+
+
+            new Alert(Alert.AlertType.INFORMATION, "Material added successfully.");
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to add material.");
+            e.printStackTrace();
+        }
+
+    }*/
 }
+
+
+

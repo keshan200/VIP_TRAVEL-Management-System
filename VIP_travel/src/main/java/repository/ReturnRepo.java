@@ -57,27 +57,27 @@ public class ReturnRepo {
 
         List<ReturnDetailsModle> returnDetailsList = new ArrayList<>();
 
-        String sql ="SELECT r.returnID, r.status, r.returnDate, r.NIC, r.damages, r.description, rd.regNo, v.year, v.vehicleName, v.fuelType, v.vehicleType, v.cost, v.availability FROM returndetails rd JOIN return_ r ON rd.returnID = r.returnID JOIN vehicle v ON rd.vehicleID = v.vehicleID";
+        String sql ="SELECT r.returnID, r.status, r.returnDate, r.NIC, r.damages, r.description, rd.regNo FROM return_ r JOIN returndetails rd ON r.returnID = rd.returnID";
 
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement ptsm = connection.prepareStatement(sql);
 
         ResultSet resultSet = ptsm.executeQuery();
-        while (resultSet.next());
+        while (resultSet.next()) {
 
-        String returnID = resultSet.getString("returnID");
-        String status = resultSet.getString("status");
-        LocalDate returnDate = resultSet.getDate("returnDate").toLocalDate();
-        String NIC = resultSet.getString("NIC");
-        String damages = resultSet.getString("damages");
-        String description = resultSet.getString("description");
-        String regNo = resultSet.getString("regNo");
+            String returnID = resultSet.getString("returnID");
+            String status = resultSet.getString("status");
+            LocalDate returnDate = resultSet.getDate("returnDate").toLocalDate();
+            String NIC = resultSet.getString("NIC");
+            String damages = resultSet.getString("damages");
+            String description = resultSet.getString("description");
+            String regNo = resultSet.getString("regNo");
 
-        ReturnDetailsModle er= new ReturnDetailsModle(returnID, status, returnDate, NIC, damages, description,regNo);
-        returnDetailsList.add(er);
+            ReturnDetailsModle er = new ReturnDetailsModle(returnID, status, returnDate, NIC, damages, description, regNo);
+            returnDetailsList.add(er);
 
-
+        }
         return returnDetailsList;
     }
 

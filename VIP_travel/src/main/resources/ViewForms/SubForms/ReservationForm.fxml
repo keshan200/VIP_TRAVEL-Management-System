@@ -98,7 +98,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="782.0" layoutY="271.0" onAction="#btnDelete" prefHeight="40.0" prefWidth="172.0" style="-fx-background-color: #e36414;" text="Delete Booking">
+      <JFXButton layoutX="782.0" layoutY="271.0" onAction="#btnPrintBill" prefHeight="40.0" prefWidth="172.0" style="-fx-background-color: #e36414;" text="Print Bill">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

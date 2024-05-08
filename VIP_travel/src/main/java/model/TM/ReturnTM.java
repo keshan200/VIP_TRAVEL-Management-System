@@ -25,4 +25,6 @@ public class ReturnTM {
     private  JFXButton remove;
 
 
+    public ReturnTM(String returnID, String status, LocalDate rDate, String nic, String regNo, String damages, String desc) {
+    }
 }

@@ -28,7 +28,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField fx:id="txtTelNO" layoutX="48.0" layoutY="289.0" prefHeight="34.0" prefWidth="206.0">
+      <TextField fx:id="txtTelNO" layoutX="48.0" layoutY="289.0" onKeyReleased="#telNoAction" prefHeight="34.0" prefWidth="206.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>

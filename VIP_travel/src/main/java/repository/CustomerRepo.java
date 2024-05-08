@@ -46,17 +46,17 @@ public class CustomerRepo {
 
 
 
-    public static boolean Update(CustomerModle cusModle) throws SQLException {
+    public static boolean Update(CustomerModle cus) throws SQLException {
 
         String sql = "UPDATE customer SET name = ?, telephoneNO = ?, address = ? WHERE customerID = ?";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, cusModle.getName());
-        pstm.setInt(2, cusModle.getTelNO());
-        pstm.setString(3, cusModle.getAddress());
-        pstm.setString(4, cusModle.getCustomerID());
+        pstm.setObject(1,cus.getName());
+        pstm.setObject(2, cus.getTelNO());
+        pstm.setObject(3, cus.getAddress());
+        pstm.setObject(4, cus.getCustomerID());
 
         return pstm.executeUpdate() > 0;
     }

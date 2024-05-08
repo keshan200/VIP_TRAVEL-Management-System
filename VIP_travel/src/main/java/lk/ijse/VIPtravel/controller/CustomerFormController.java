@@ -9,12 +9,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.VIPtravel.Util.Regex;
 import model.CustomerModle;
 import model.ReservationModle;
 import model.TM.CustomerTM;
 import repository.CustomerRepo;
 import repository.ReservationRepo;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -149,7 +151,7 @@ private  void setcellValues(){
         try {
 
             boolean isSaved = CustomerRepo.Add(customerModle);
-
+            System.out.println(customerModle);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved!!").show();
                 clearFields();
@@ -220,8 +222,18 @@ private  void setcellValues(){
         }
 
 
+    public boolean isValied(){
+        if (!Regex.setTextColour(TextField.ID,txtID)) return false;
+        if (!Regex.setTextColor(TextField.EMAIL,txtEmail)) return false;
+        return true;
+    }
 
+    @FXML
+    void telNoAction(KeyEvent event) {
 
+        Regex.setTextColor(TextField.,txtID);
+
+    }
 
 
     @FXML
