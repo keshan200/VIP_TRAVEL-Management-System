@@ -210,7 +210,7 @@ private  void setcellValues(){
     }
 
     @FXML
-    void btnUpdate(ActionEvent event) throws SQLException {
+    void btnUpdate(ActionEvent event) {
 
         String cusID = txtCustomerID.getText();
         String name = txtName.getText();
@@ -219,7 +219,8 @@ private  void setcellValues(){
 
         CustomerModle cusmodle = new CustomerModle(cusID,name,telNO,adrs);
 
-        boolean isUpdate = CustomerRepo.Update(cusmodle);
+        try{
+            boolean isUpdate = CustomerRepo.Update(cusmodle);
             if (isUpdate) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer Updated Sucsesssfully!").show();
                 clearFields();
@@ -228,6 +229,11 @@ private  void setcellValues(){
             } else {
                 new Alert(Alert.AlertType.ERROR, "Can't Update").show();
             }
+
+        }catch (Exception e){
+            throw  new RuntimeException(e);
+        }
+
         }
 
 
@@ -260,7 +266,6 @@ private  void setcellValues(){
     }
 
     public void telNoAction(javafx.scene.input.KeyEvent keyEvent) {
-
         Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO,txtTelNO);
     }
 }

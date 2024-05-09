@@ -28,6 +28,7 @@ import repository.ReservationRepo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -321,22 +322,36 @@ public class BookingFormController {
 
 
     @FXML
-    void btnPrintBill(ActionEvent event) throws JRException, SQLException {
+     /* void btnPrintBill(ActionEvent event) throws JRException, SQLException {
 
         JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/BookingBill2.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-        Map<String,Object> data = new HashMap<>();
-        String NIC = txtNIC.getText();
-        data.put("count",NIC);
+        Map<String,Object> dataa = new HashMap<>();
+        /*String NIC = txtReservationID.getText();
+        System.out.println("get r ID to jasper >>>>"+NIC);*/
+        /*dataa.put("count",txtReservationID.getText());
 
         JasperPrint jasperPrint =
-                JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
+                JasperFillManager.fillReport(jasperReport, dataa, DBconnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint,false);
 
 
 
+    }*/
+
+    void btnPrintBill(ActionEvent event) throws JRException, SQLException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/BookingBill2.jrxml");
+        JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("count", txtReservationID.getText());
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
     }
+
 
 
     public  void clearFields(){
