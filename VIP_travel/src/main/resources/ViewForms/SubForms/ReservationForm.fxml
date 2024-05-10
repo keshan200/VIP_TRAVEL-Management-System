@@ -13,17 +13,17 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.BookingFormController">
+<AnchorPane fx:id="AncReservation" prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.BookingFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="21.0" layoutY="18.0" stroke="#ffc800" strokeType="INSIDE" width="655.0" />
-      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 15;" />
       <Label layoutX="41.0" layoutY="64.0" prefHeight="18.0" prefWidth="122.0" text="Reservation ID *" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNIC" layoutX="38.0" layoutY="160.0" onAction="#selectNIC" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtRegNo" editable="false" layoutX="296.0" layoutY="237.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNIC" layoutX="38.0" layoutY="160.0" onAction="#selectNIC" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtRegNo" editable="false" layoutX="296.0" layoutY="237.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
       <Label layoutX="253.0" layoutY="27.0" prefHeight="18.0" prefWidth="191.0" text="Reservation Form" textFill="GOLD">
          <font>
             <Font name="Ebrima Bold" size="23.0" />
@@ -34,7 +34,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbVehicleName" layoutX="38.0" layoutY="237.0" onAction="#vehicleNameOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <ComboBox fx:id="cmbVehicleName" layoutX="38.0" layoutY="237.0" onAction="#vehicleNameOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
       <Label layoutX="41.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text="Vehicle Name *" textFill="WHITE">
          <font>
             <Font size="16.0" />
@@ -45,14 +45,14 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCostPerDay" editable="false" layoutX="541.0" layoutY="237.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCostPerDay" editable="false" layoutX="541.0" layoutY="237.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-radius: 15;" />
       <Label layoutX="534.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text=" Cost Per Day *" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <DatePicker fx:id="DateStart" layoutX="38.0" layoutY="308.0" onAction="#StartDateOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
-      <DatePicker fx:id="DateEnd" layoutX="296.0" layoutY="310.0" onAction="#EndDateOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
+      <DatePicker fx:id="DateStart" layoutX="38.0" layoutY="308.0" onAction="#StartDateOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <DatePicker fx:id="DateEnd" layoutX="296.0" layoutY="310.0" onAction="#EndDateOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
       <Label layoutX="45.0" layoutY="284.0" prefHeight="26.0" prefWidth="94.0" text="Start Date *" textFill="WHITE">
          <font>
             <Font size="16.0" />
@@ -63,7 +63,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDayCount" layoutX="560.0" layoutY="310.0" prefHeight="34.0" prefWidth="39.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtDayCount" layoutX="560.0" layoutY="310.0" prefHeight="34.0" prefWidth="39.0" style="-fx-background-radius: 15;" />
       <Label layoutX="541.0" layoutY="284.0" prefHeight="18.0" prefWidth="122.0" text="Days Count *" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -93,32 +93,54 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="771.0" layoutY="192.0" onAction="#btnAdd" prefHeight="36.0" prefWidth="146.0" style="-fx-background-color: Gold; -fx-background-radius: 20;" text=" Add Booking">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/confirm%20booking.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="771.0" layoutY="127.0" onAction="#btnPrintBill" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #e36414; -fx-background-radius: 20;" text="Print Bill">
+      <JFXButton layoutX="771.0" layoutY="192.0" onAction="#btnAdd" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="     Add Booking">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="771.0" layoutY="254.0" onAction="#btnPayment" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #70e000; -fx-background-radius: 20;" text="Payment Options">
+      <JFXButton layoutX="771.0" layoutY="127.0" onAction="#btnPrintBill" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Print Bill">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtCusName" editable="false" layoutX="296.0" layoutY="162.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 10;" />
-      <JFXButton layoutX="548.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="Add Cart">
+      <JFXButton layoutX="771.0" layoutY="254.0" onAction="#btnPayment" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="      Payment ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtCusName" editable="false" layoutX="296.0" layoutY="162.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <JFXButton layoutX="525.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="130.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="     Add Cart">
          <font>
             <Font name="Ebrima Bold" size="17.0" />
          </font></JFXButton>
+      <JFXButton layoutX="525.0" layoutY="162.0" onAction="#btnAddCustomer" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #70e000; -fx-background-radius: 20;" text="     Add">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
+      <ImageView fitHeight="19.0" fitWidth="16.0" layoutX="533.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Add%20NEw.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="26.0" layoutX="536.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/add%20cart%20colour.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="781.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/print.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="39.0" layoutX="786.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/payment.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="29.0" fitWidth="23.0" layoutX="782.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/add%20booking%20colour.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

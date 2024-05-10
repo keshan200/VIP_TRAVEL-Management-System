@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
@@ -80,6 +81,9 @@ public class BookingFormController {
 
     @FXML
     private TextField txtCusName;
+
+    @FXML
+    private AnchorPane AncReservation;
     ObservableList<CartTM> resList = FXCollections.observableArrayList();
 
 
@@ -241,7 +245,7 @@ public class BookingFormController {
         try {
             List<VehicleModle> vehicleList = VehicleRepo.SearchByVehicleName(vehicleName);
             if (!vehicleList.isEmpty()) {
-                // Assuming you want to handle only the first vehicle in the list
+
                 VehicleModle vehicleModle = vehicleList.get(0);
                 txtRegNo.setText(vehicleModle.getRegNo());
                 txtCostPerDay.setText(String.valueOf(vehicleModle.getCost()));
@@ -398,6 +402,7 @@ public class BookingFormController {
                 resList.clear();
                 clearFields();
                 loadAllReservations();
+                getCurrentBookingId();
                 new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();
@@ -443,6 +448,15 @@ public class BookingFormController {
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.show();
+    }
+
+    public void btnAddCustomer(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewForms/SubForms/CustomerForm.fxml"));
+        Parent load = loader.load();
+
+        AncReservation.getChildren().clear();
+        AncReservation.getChildren().add(load);
     }
 }
 

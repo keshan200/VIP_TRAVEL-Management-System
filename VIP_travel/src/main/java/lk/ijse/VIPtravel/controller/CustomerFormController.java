@@ -171,6 +171,9 @@ private  void setcellValues(){
         }
 
 
+
+
+
     @FXML
     void btnClear(ActionEvent event) {
        clearFields();
@@ -264,6 +267,9 @@ private  void setcellValues(){
 
         }
     }
+
+
+
 
     public void telNoAction(javafx.scene.input.KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO,txtTelNO);

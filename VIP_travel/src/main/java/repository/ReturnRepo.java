@@ -2,6 +2,7 @@ package repository;
 
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.BookingDetailsModle;
+import model.CustomerModle;
 import model.ReturnDetailsModle;
 import model.ReturnModle;
 
@@ -74,11 +75,59 @@ public class ReturnRepo {
             String description = resultSet.getString("description");
             String regNo = resultSet.getString("regNo");
 
-            ReturnDetailsModle er = new ReturnDetailsModle(returnID, status, returnDate, NIC, damages, description, regNo);
+            ReturnDetailsModle er = new ReturnDetailsModle(returnID, status, returnDate, NIC,regNo, damages, description);
             returnDetailsList.add(er);
 
         }
         return returnDetailsList;
     }
 
+
+
+
+    public static CustomerModle getCustomerNameByNIC(String nic) throws SQLException {
+      //  String sql = "SELECT  name FROM customer WHERE NIC = ?";
+        String sql = "SELECT r.returnID, r.status, r.returnDate, r.NIC, r.damages, r.description FROM return_ r JOIN customer c ON r.customerID = c.customerID WHERE c.NIC = ?";
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setObject(1,nic);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            String customerNIC = nic;
+            String name = resultSet.getString("name");
+
+            CustomerModle customerModle = new CustomerModle(customerNIC, name);
+            return customerModle;
+        }
+        return null;
+    }
+
+
+    public static List<ReturnDetailsModle> getReturnsToCartByNIC(String nic) throws SQLException {
+        String sql = "SELECT rd.returnID, r.status, r.returnDate, r.NIC, rd.regNo, r.damages, r.description FROM returnDetails rd JOIN return_ r ON rd.returnID = r.returnID JOIN customer c ON r.customerID = c.customerID WHERE c.NIC = ?";
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, nic);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<ReturnDetailsModle> returnList = new ArrayList<>();
+        while (resultSet.next()) {
+            String returnID = resultSet.getString("returnID");
+            String status = resultSet.getString("status");
+            LocalDate returnDate = resultSet.getDate("returnDate").toLocalDate();
+            String customerNIC = resultSet.getString("NIC");
+            String regNo = resultSet.getString("regNo");
+            String damages = resultSet.getString("damages");
+            String description = resultSet.getString("description");
+
+            ReturnDetailsModle returnDetailsModel = new ReturnDetailsModle(returnID, status, returnDate, customerNIC, regNo, damages, description);
+            returnList.add(returnDetailsModel);
+        }
+        return returnList;
+    }
 }

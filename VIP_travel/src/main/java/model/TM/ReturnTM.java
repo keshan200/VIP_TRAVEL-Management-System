@@ -15,7 +15,10 @@ import java.time.LocalDate;
 
 
 public class ReturnTM {
-    private String returnID;
+
+
+
+  private String returnID;
     private String status;
     private LocalDate returnDate;
     private String NIC;
@@ -25,6 +28,13 @@ public class ReturnTM {
     private  JFXButton remove;
 
 
+
+
+
     public ReturnTM(String returnID, String status, LocalDate rDate, String nic, String regNo, String damages, String desc) {
     }
+
+
+
+
 }

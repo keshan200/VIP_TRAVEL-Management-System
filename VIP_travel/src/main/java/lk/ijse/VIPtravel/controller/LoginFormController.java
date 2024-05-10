@@ -9,11 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,6 +33,15 @@ public class LoginFormController {
     @FXML
     private TextField txtUser;
 
+
+
+
+    public  void initialize(){
+
+    }
+
+
+
     @FXML
     void btnLogin(ActionEvent event) throws SQLException, IOException {
         String userID = txtUser.getText();
@@ -39,6 +50,7 @@ public class LoginFormController {
         if (userID.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.WARNING, "Please enter  User ID and Password!").show();
             return;
+
         }
 
         checkCredential(userID, password, (Stage) ((Node) event.getSource()).getScene().getWindow());

@@ -53,17 +53,17 @@
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="609.0" layoutY="30.0" stroke="#ffbe00" strokeType="INSIDE" width="377.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="82.0" layoutX="611.0" layoutY="309.0" stroke="#ffd902" strokeType="INSIDE" width="377.0" />
-      <JFXButton layoutX="622.0" layoutY="333.0" onAction="#btnSave" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #38b000; -fx-background-radius: 20;" text="Save">
+      <JFXButton layoutX="622.0" layoutY="333.0" onAction="#btnSave" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Save">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="715.0" layoutY="333.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #00a6fb; -fx-background-radius: 20;" text="Update">
+      <JFXButton layoutX="715.0" layoutY="333.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Update">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="816.0" layoutY="333.0" onAction="#btnClear" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #6f2dbd; -fx-background-radius: 20;" text="Clear">
+      <JFXButton layoutX="816.0" layoutY="333.0" onAction="#btnClear" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Clear">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

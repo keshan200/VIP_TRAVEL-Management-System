@@ -16,10 +16,7 @@ import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
 import model.TM.CartTM;
 import model.TM.ReturnTM;
-import repository.ReservationRepo;
-import repository.ReturnDetailsRepo;
-import repository.ReturnFormRepo;
-import repository.ReturnRepo;
+import repository.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,44 +95,75 @@ public class ReturnFormController {
         setCmbDamage();
         getCurrentID();
         setCellVFactory();
- loadAllReservations();
+        loadAllReservations();
+        clearFields();
+
 
 
 
     }
+    @FXML
+    void clearFields() {
 
+        txtNIC.setText("");
+        cmbDamge.setValue("");
+        cmbStatus.setValue("");
+        ReturnDate.setValue(null);
+        txtName.setText("");
+        txtRegNO.setText("");
+        txtdesc.setText("");
+        txtvehicle.setText("");
+    }
 
 
     @FXML
     void nicOnAction(ActionEvent event) {
+
+        String NIC = txtNIC.getText();
         try {
-            loadReturnsForCustomer();
+            CustomerModle customerNameByNIC = BookingDetailsRepo.getCustomerNameByNIC(NIC);
+            if (customerNameByNIC != null) {
+                txtName.setText(customerNameByNIC.getName());
+            }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Error loading customer details: " + e.getMessage()).show();
+            throw new RuntimeException(e);
         }
+
+
+        try {
+            String nic = txtNIC.getText();
+            if (!nic.isEmpty()) {
+                loadReturnsForCustomer(nic);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
-    private void loadReturnsForCustomer() throws SQLException {
-        String nic = txtNIC.getText();
-        if (!nic.isEmpty()) {
-            List<ReturnTM> returnList = new ArrayList<>();
-            List<ReturnDetailsModle> returnDetailsList = ReturnDetailsRepo.getReturnsForCustomer(nic);
-            for (ReturnDetailsModle returnDetails : returnDetailsList) {
-                ReturnTM returnTM = new ReturnTM(
-                        returnDetails.getReturnID(),
-                        returnDetails.getStatus(),
-                        returnDetails.getReturnDate(),
-                        returnDetails.getNIC(),
-                        returnDetails.getRegNo(),
-                        returnDetails.getDamages(),
-                        returnDetails.getDesc(),
-                        new JFXButton("❌")
-                );
-                returnList.add(returnTM);
-            }
-            tblReturn.setItems(FXCollections.observableArrayList(returnList));
+
+
+    private void loadReturnsForCustomer(String nic) throws SQLException {
+        List<ReturnTM> returnList = new ArrayList<>();
+        List<ReturnDetailsModle> returnDetailsList = ReturnRepo.getReturnsToCartByNIC(nic);
+        for (ReturnDetailsModle returnDetails : returnDetailsList) {
+            ReturnTM returnTM = new ReturnTM(
+                    returnDetails.getReturnID(),
+                    returnDetails.getStatus(),
+                    returnDetails.getReturnDate(),
+                    returnDetails.getNIC(),
+                    returnDetails.getRegNo(),
+                    returnDetails.getDamages(),
+                    returnDetails.getDesc(),
+                    new JFXButton("❌")
+            );
+            returnList.add(returnTM);
         }
+        tblReturn.setItems(FXCollections.observableArrayList(returnList));
     }
+
+
 
 
     private void setCellVFactory() {
@@ -182,14 +210,21 @@ public class ReturnFormController {
         RetutnFormModle retutnFormModle = new RetutnFormModle(returnModle, RetunList);
 
           try {
+
+           //  String NIC = txtNIC.getText();
               boolean isOk = ReturnFormRepo.SetReturn(retutnFormModle);
               if (isOk ) {
                   retList.clear();
 
                   new Alert(Alert.AlertType.CONFIRMATION,"Return Sucsess").show();
+                  loadAllReservations();
+                 getCurrentID();
+                  clearFields();
 
               }else {
-                  new Alert(Alert.AlertType.ERROR,"Return Sucsess").show();
+                  new Alert(Alert.AlertType.ERROR,"Can 't Return ").show();
+                  clearFields();
+
               }
 
           } catch (SQLException e) {
