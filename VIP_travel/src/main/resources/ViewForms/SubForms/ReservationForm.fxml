@@ -16,14 +16,23 @@
 <AnchorPane fx:id="AncReservation" prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.BookingFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="21.0" layoutY="18.0" stroke="#ffc800" strokeType="INSIDE" width="655.0" />
-      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="41.0" layoutY="64.0" prefHeight="18.0" prefWidth="122.0" text="Reservation ID *" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNIC" layoutX="38.0" layoutY="160.0" onAction="#selectNIC" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtRegNo" editable="false" layoutX="296.0" layoutY="237.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtNIC" layoutX="38.0" layoutY="160.0" onAction="#selectNIC" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtRegNo" editable="false" layoutX="296.0" layoutY="237.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="253.0" layoutY="27.0" prefHeight="18.0" prefWidth="191.0" text="Reservation Form" textFill="GOLD">
          <font>
             <Font name="Ebrima Bold" size="23.0" />
@@ -45,7 +54,10 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCostPerDay" editable="false" layoutX="541.0" layoutY="237.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtCostPerDay" editable="false" layoutX="541.0" layoutY="237.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="534.0" layoutY="211.0" prefHeight="18.0" prefWidth="122.0" text=" Cost Per Day *" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -63,7 +75,10 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDayCount" layoutX="560.0" layoutY="310.0" prefHeight="34.0" prefWidth="39.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtDayCount" layoutX="560.0" layoutY="310.0" prefHeight="34.0" prefWidth="39.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="541.0" layoutY="284.0" prefHeight="18.0" prefWidth="122.0" text="Days Count *" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -87,7 +102,10 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTotalCost" layoutX="217.0" layoutY="378.0" prefHeight="34.0" prefWidth="158.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtTotalCost" layoutX="217.0" layoutY="378.0" prefHeight="34.0" prefWidth="158.0" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="297.0" layoutY="134.0" prefHeight="18.0" prefWidth="122.0" text="Customer Name" textFill="WHITE">
          <font>
             <Font size="16.0" />
@@ -108,7 +126,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtCusName" editable="false" layoutX="296.0" layoutY="162.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtCusName" editable="false" layoutX="296.0" layoutY="162.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <JFXButton layoutX="525.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="130.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="     Add Cart">
          <font>
             <Font name="Ebrima Bold" size="17.0" />

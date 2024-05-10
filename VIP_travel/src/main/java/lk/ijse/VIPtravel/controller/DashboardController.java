@@ -72,6 +72,7 @@ public class DashboardController {
         setDate();
         setCellValues();
         loadAllvehicles();
+
         try {
             setCustomerCount();
             setEmployeeCount();
@@ -79,6 +80,7 @@ public class DashboardController {
             setVanCount();
             setSuvCount();
             setReservationCount();
+          //  setMIDDLE();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -260,7 +262,23 @@ public class DashboardController {
 
     }
 
+public  void setMIDDLE() {
 
+
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewForms/SubForms/DashBoardMiddleForm.fxml"));
+        Parent load =loader.load();
+
+        AncMain.getChildren().clear();
+        AncMain.getChildren().add(load);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+
+
+
+
+}
 
     public void setUserName(String name) {
         lblName.setText("Welcome"+" "+ name);
