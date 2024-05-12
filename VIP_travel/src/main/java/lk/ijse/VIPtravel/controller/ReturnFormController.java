@@ -218,8 +218,10 @@ public class ReturnFormController {
 
                   new Alert(Alert.AlertType.CONFIRMATION,"Return Sucsess").show();
                   loadAllReservations();
-                 getCurrentID();
+                  getCurrentID();
                   clearFields();
+                  txtNIC.setDisable(false);
+
 
               }else {
                   new Alert(Alert.AlertType.ERROR,"Can 't Return ").show();
@@ -255,6 +257,10 @@ public class ReturnFormController {
                 int selectedIndex = tblReturn.getSelectionModel().getSelectedIndex();
                 retList.remove(selectedIndex);
 
+                if (retList.isEmpty()) {
+                    txtNIC.setDisable(false);
+                }
+
             }
         });
 
@@ -269,11 +275,17 @@ public class ReturnFormController {
 
           }
         }
-ReturnTM tm = new ReturnTM(returnID,status,date,NIC,regNo,damages,desc,remove);
+
+        txtNIC.setDisable(true);
+        ReturnTM tm = new ReturnTM(returnID,status,date,NIC,regNo,damages,desc,remove);
         retList.add(tm);
         tblReturn.setItems(retList);
 
     }
+
+
+
+
 
     @FXML
     void btnUpdate(ActionEvent event) {

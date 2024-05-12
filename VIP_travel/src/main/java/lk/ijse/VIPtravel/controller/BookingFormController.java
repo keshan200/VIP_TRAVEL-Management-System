@@ -84,6 +84,9 @@ public class BookingFormController {
 
     @FXML
     private AnchorPane AncReservation;
+
+    @FXML
+    private TextField txtDate;
     ObservableList<CartTM> resList = FXCollections.observableArrayList();
 
 
@@ -95,6 +98,7 @@ public class BookingFormController {
         calculateNetTotal();
         setCellVFactory();
       loadAllReservations();
+      setDate();
     //  showSelectedVehicleDetails();
     }
 
@@ -183,19 +187,70 @@ public class BookingFormController {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+    private void loadReservationsForCustomer(String NIC) throws SQLException {
+        List<CartTM> reservationList = new ArrayList<>();
+        List<BookingDetailsModle> bookingDetailsList = BookingDetailsRepo.getBookingDetailsByNIC(NIC);
+        for (BookingDetailsModle bookingDetails : bookingDetailsList) {
+            CartTM cartItem = new CartTM(
+                    bookingDetails.getReservationID(),
+                    bookingDetails.getRegNo(),
+                    bookingDetails.getStartDate(),
+                    bookingDetails.getEndDate(),
+                    bookingDetails.getDaysCount(),
+                    bookingDetails.getTotalCost(),
+                    new JFXButton("❌")
+            );
+            reservationList.add(cartItem);
+        }
+        tblReservation.setItems(FXCollections.observableArrayList(reservationList));
+
+    }
+
+
     @FXML
     void selectNIC(ActionEvent event) {
+
         String NIC = txtNIC.getText();
+        if (NIC.isEmpty()) {
+
+      /*  }else{
+            new Alert(Alert.AlertType.INFORMATION, "Customer not found!").show();*/
+
+
+            return;
+        }
+
         try {
             CustomerModle customerNameByNIC = BookingDetailsRepo.getCustomerNameByNIC(NIC);
             if (customerNameByNIC != null) {
                 txtCusName.setText(customerNameByNIC.getName());
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Error occurred while fetching customer details.").show();
+            return;
+        }
+
+        try {
+            loadReservationsForCustomer(NIC);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Error occurred while loading reservations for the customer.").show();
         }
 
     }
+
 
 
     private void getAvailableVehicleNames() {
@@ -272,6 +327,8 @@ public class BookingFormController {
         double costPerDay = Double.parseDouble(txtCostPerDay.getText());
         double totalCost = costPerDay * days;
 
+        String NIC = txtNIC.getText();
+
         JFXButton remove = new JFXButton("❌");
         remove.setCursor(Cursor.HAND);
         remove.setStyle("-fx-text-fill: red;");
@@ -283,6 +340,11 @@ public class BookingFormController {
                 int selectedIndex = tblReservation.getSelectionModel().getSelectedIndex();
                 resList.remove(selectedIndex);
                 calculateNetTotal();
+
+
+                if (resList.isEmpty()) {
+                    txtNIC.setDisable(false);
+                }
             }
         });
 
@@ -302,7 +364,7 @@ public class BookingFormController {
                 }
             }
         }
-
+        txtNIC.setDisable(true);// cant add multiple customer in same reservationID
 
         CartTM tm = new CartTM(resID, regNo, startDate, endDate, days, totalCost, remove);
                resList.add(tm);
@@ -320,40 +382,33 @@ public class BookingFormController {
     }
 
 
-
+public  void setDate(){
+    LocalDate now = LocalDate.now();
+    txtDate.setText(String.valueOf(now));
+}
 
 
 
 
     @FXML
-     /* void btnPrintBill(ActionEvent event) throws JRException, SQLException {
-
-        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/BookingBill2.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-
-        Map<String,Object> dataa = new HashMap<>();
-        /*String NIC = txtReservationID.getText();
-        System.out.println("get r ID to jasper >>>>"+NIC);*/
-        /*dataa.put("count",txtReservationID.getText());
-
-        JasperPrint jasperPrint =
-                JasperFillManager.fillReport(jasperReport, dataa, DBconnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint,false);
-
-
-
-    }*/
-
     void btnPrintBill(ActionEvent event) throws JRException, SQLException {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/BookingBill2.jrxml");
-        JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
-        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("count", txtReservationID.getText());
+      String lastReservationID = ReservationRepo.getCurrentReservationId();
+        if (lastReservationID != null && !lastReservationID.isEmpty()) {
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint, false);
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/BookingForm.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("resID", lastReservationID);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+        } else {
+            new Alert(Alert.AlertType.ERROR, "No reservation ID found!").show();
+        }
+
     }
 
 
@@ -380,6 +435,8 @@ public class BookingFormController {
         List<BookingDetailsModle> bookingList = new ArrayList<>();
 
 
+
+
         for (CartTM tm : tblReservation.getItems()) {
             BookingDetailsModle od = new BookingDetailsModle(
                     tm.getRegNo(),
@@ -393,6 +450,7 @@ public class BookingFormController {
         }
 
 
+
         ReservationModle reservationModle = new ReservationModle(resID, NIC);
         BookingFormModle bm = new BookingFormModle(reservationModle, bookingList);
 
@@ -404,6 +462,7 @@ public class BookingFormController {
                 loadAllReservations();
                 getCurrentBookingId();
                 new Alert(Alert.AlertType.CONFIRMATION, "Booking Confirmed!").show();
+                txtNIC.setDisable(false);
             } else {
                 new Alert(Alert.AlertType.WARNING, "Reservation Unsuccessful!").show();
             }
@@ -418,6 +477,8 @@ public class BookingFormController {
 
         try {
             List<BookingDetailsModle> allBookingDetails = ReservationRepo.getAllBookingDetails();
+
+
 
 
             for (BookingDetailsModle bookingDetails : allBookingDetails) {

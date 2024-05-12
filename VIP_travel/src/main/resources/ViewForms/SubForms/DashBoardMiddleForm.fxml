@@ -11,92 +11,109 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #011028;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.DashboardMiddleFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="274.0" layoutX="63.0" layoutY="43.0" stroke="#e10808" strokeType="INSIDE" width="859.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ee9b00" height="116.0" layoutX="83.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="242.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffa9" height="116.0" layoutX="413.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a663cc" height="116.0" layoutX="695.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="131.0" layoutY="83.0" prefHeight="32.0" prefWidth="146.0" text="Vehicle Count">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="422.0" layoutY="79.0" prefHeight="39.0" prefWidth="181.0" text="Customers Count">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="720.0" layoutY="79.0" prefHeight="39.0" prefWidth="171.0" text="Employe Count">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblCar" layoutX="96.0" layoutY="150.0" prefHeight="40.0" prefWidth="47.0" text=" 0">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblSuv" layoutX="175.0" layoutY="148.0" prefHeight="43.0" prefWidth="43.0" text="12">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblVan" layoutX="264.0" layoutY="148.0" prefHeight="43.0" prefWidth="43.0" text=" 0">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblCustomer" layoutX="538.0" layoutY="120.0" prefHeight="56.0" prefWidth="47.0" text="56">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblEmploye" layoutX="815.0" layoutY="130.0" prefHeight="39.0" prefWidth="54.0" text="20">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="96.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/carIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="175.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/suvicon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="261.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/vanIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="739.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/employee.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="450.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/icons8-customero+oloured-100.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5179e" height="56.0" layoutX="83.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="242.0" />
-      <TableView fx:id="tblVehicleAvailable" layoutX="57.0" layoutY="412.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="356.0" layoutX="38.0" layoutY="36.0" stroke="#ffdf00" strokeType="INSIDE" width="955.0" />
+      <AnchorPane layoutX="711.0" layoutY="69.0" prefHeight="123.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="34.0" prefHeight="39.0" prefWidth="192.0" text="Employe Count">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblEmploye" layoutX="130.0" layoutY="49.0" prefHeight="39.0" prefWidth="54.0" text="20">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="58.0" fitWidth="72.0" layoutX="34.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/employe%20colour.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="390.0" layoutY="65.0" prefHeight="123.0" prefWidth="251.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="24.0" prefHeight="40.0" prefWidth="227.0" text="Customers Count">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/icons8-customero+oloured-100.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCustomer" layoutX="138.0" layoutY="45.0" prefHeight="56.0" prefWidth="47.0" text="56">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblVehicleAvailable" layoutX="38.0" layoutY="410.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green;">
          <columns>
             <TableColumn fx:id="colAvailble" prefWidth="148.7999267578125" text="Available Vehicles" />
             <TableColumn fx:id="colCount" prefWidth="82.39999389648438" text="Count" />
             <TableColumn fx:id="colPrice" prefWidth="126.39999999999998" text="Price per Day" />
          </columns>
       </TableView>
-      <Label layoutX="102.0" layoutY="257.0" prefHeight="30.0" prefWidth="146.0" text="Total Bookings">
+      <AnchorPane layoutX="75.0" layoutY="65.0" prefHeight="116.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="48.0" layoutY="7.0" prefHeight="32.0" prefWidth="146.0" text="Vehicle Count">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/carIcon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCar" layoutX="12.0" layoutY="82.0" prefHeight="40.0" prefWidth="47.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="102.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/suvicon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblSuv" layoutX="102.0" layoutY="80.0" prefHeight="43.0" prefWidth="43.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="178.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/vanIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label fx:id="lblVan" layoutX="264.0" layoutY="148.0" prefHeight="43.0" prefWidth="43.0" text="12">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="lblBookingCount" layoutX="261.0" layoutY="252.0" prefHeight="39.0" prefWidth="50.0" text="25">
-         <font>
-            <Font name="System Bold" size="27.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="75.0" layoutY="233.0" prefHeight="116.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="35.0" prefHeight="40.0" prefWidth="200.0" text="Total Bookings">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBookingCount" layoutX="135.0" layoutY="45.0" prefHeight="39.0" prefWidth="50.0" text="25">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="123.0" layoutX="48.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/resevation%20colour.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

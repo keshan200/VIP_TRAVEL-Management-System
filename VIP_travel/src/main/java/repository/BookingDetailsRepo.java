@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDetailsRepo extends CartTM {
@@ -67,4 +69,62 @@ public static boolean save(List<BookingDetailsModle> BookingList) throws SQLExce
         }
         return null;
     }
+
+
+
+
+
+    public static List<BookingDetailsModle> getBookingDetailsByNIC(String NIC) throws SQLException {
+
+    String sql = "SELECT  bd.regNo, bd.reservationID, bd.fullCost, bd.startDate, bd.endDate, bd.Days FROM bookingDetails bd JOIN reservation r ON bd.reservationID = r.reservationID WHERE r.NIC = ?";
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, NIC);
+
+        ResultSet resultSet = pstm.executeQuery();
+        List<BookingDetailsModle> bookingDetailsList = new ArrayList<>();
+
+        while (resultSet.next()) {
+                String regNo = resultSet.getString("regNo");
+                String reservationID = resultSet.getString("reservationID");
+                LocalDate startDate = resultSet.getDate("startDate").toLocalDate();
+                LocalDate endDate = resultSet.getDate("endDate").toLocalDate();
+                int daysCount = resultSet.getInt("Days");
+                double totalCost = resultSet.getDouble("fullCost");
+
+
+              BookingDetailsModle b = new BookingDetailsModle(reservationID,regNo,startDate,endDate,daysCount,totalCost);
+            bookingDetailsList.add(b);
+             }
+
+        return bookingDetailsList;
+        }
+
+
+
+    public static String getCurrentReservationId() throws SQLException {
+        String sql = "SELECT reservationID FROM bookingDetails ORDER BY reservationID DESC LIMIT 1";
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement ptsm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = ptsm.executeQuery();
+
+        if (resultSet.next()) {
+            String ResID = resultSet.getString(1);
+            return ResID;
+        }
+        return null;
+    }
+
+
+
+
+
+
 }
+
+
+
+

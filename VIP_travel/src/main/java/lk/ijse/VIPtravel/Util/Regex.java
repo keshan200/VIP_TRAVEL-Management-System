@@ -42,6 +42,46 @@ public class Regex {
     }
 
 
+
+    /*public static void addMaterial(String materialName, int qty, String supplierName, Date date, double unitPrice, int rawMaterialId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        connection.setAutoCommit(false);
+
+        try {
+
+            String insertRawMaterialSql = "INSERT INTO RawMaterial (RawMaterialID, Name, Quantity) VALUES (?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertRawMaterialSql);
+            try {
+                preparedStatement.setInt(1, rawMaterialId);
+                preparedStatement.setString(2, materialName);
+                preparedStatement.setInt(3, qty);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            String insertSupplierDetailSql = "INSERT INTO SupplierDetail (RawMaterialID, SupplierID, Date, Price) VALUES (?, (SELECT SupplierID FROM Supplier WHERE Name = ?), ?, ?)";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(insertSupplierDetailSql);
+            try  {
+                preparedStatement1.setInt(1, rawMaterialId);
+                preparedStatement1.setString(2, supplierName);
+                preparedStatement1.setDate(3, date);
+                preparedStatement1.setDouble(4, unitPrice);
+                preparedStatement1.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            connection.setAutoCommit(true);
+
+        }*/
+
     public static boolean setTextColor(TextField location, javafx.scene.control.TextField textField) {
         if (Regex.isTextFieldValid(location, textField.getText())) {
             textField.setStyle("-fx-focus-color: green; -fx-unfocus-color: green;");

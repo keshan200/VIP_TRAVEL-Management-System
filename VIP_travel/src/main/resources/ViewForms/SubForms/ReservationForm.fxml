@@ -163,5 +163,11 @@
             <Image url="@../../Images/add%20booking%20colour.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtDate" layoutX="296.0" layoutY="103.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 15;" />
+      <Label layoutX="300.0" layoutY="77.0" prefHeight="18.0" prefWidth="122.0" text="Date" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

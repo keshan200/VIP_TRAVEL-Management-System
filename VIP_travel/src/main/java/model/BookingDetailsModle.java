@@ -37,6 +37,12 @@ public class BookingDetailsModle extends CartTM {
     }
 
 
-    public BookingDetailsModle(String returnID, String states, LocalDate date, String nic, String regNO, String damge, String desc) {
+    public BookingDetailsModle(String reservationID, String RegNo, LocalDate startDate, LocalDate endDate, int daysCount, double totalCost) {
+        this.reservationID = reservationID;
+        this.RegNo = RegNo;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.daysCount = daysCount;
+        this.totalCost = totalCost;
     }
 }
