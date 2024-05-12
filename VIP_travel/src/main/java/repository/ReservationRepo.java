@@ -19,13 +19,14 @@ public class ReservationRepo {
 
     public static boolean Save(ReservationModle resModle) throws SQLException {
 
-        String ReservationSql = "INSERT INTO reservation (reservationID, NIC)values (?,?)";
+        String ReservationSql = "INSERT INTO reservation (reservationID, NIC, reservationDate)values (?,?,?)";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm1 = connection.prepareStatement(ReservationSql);
 
         pstm1.setString(1, resModle.getReserstionID());
         pstm1.setString(2, resModle.getNIC());
+        pstm1.setString(3, String.valueOf(resModle.getReservationDate()));
 
         return pstm1.executeUpdate() > 0;
     }

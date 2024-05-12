@@ -393,15 +393,15 @@ public  void setDate(){
     @FXML
     void btnPrintBill(ActionEvent event) throws JRException, SQLException {
 
-      String lastReservationID = ReservationRepo.getCurrentReservationId();
+        String lastReservationID = ReservationRepo.getCurrentReservationId();
         if (lastReservationID != null && !lastReservationID.isEmpty()) {
 
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/BookingForm.jrxml");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/ReservationBill2.jrxml");
             JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
             Map<String, Object> data = new HashMap<>();
-            data.put("resID", lastReservationID);
+            data.put("ReseervationID", lastReservationID);
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint, false);
@@ -431,6 +431,7 @@ public  void setDate(){
 
         String resID = txtReservationID.getText();
         String NIC = txtNIC.getText();
+        LocalDate date = LocalDate.parse(txtDate.getText());
 
         List<BookingDetailsModle> bookingList = new ArrayList<>();
 
@@ -451,7 +452,7 @@ public  void setDate(){
 
 
 
-        ReservationModle reservationModle = new ReservationModle(resID, NIC);
+        ReservationModle reservationModle = new ReservationModle(resID, NIC,date);
         BookingFormModle bm = new BookingFormModle(reservationModle, bookingList);
 
         try {
