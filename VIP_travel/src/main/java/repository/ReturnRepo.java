@@ -18,7 +18,7 @@ public class ReturnRepo {
 
     public static  boolean save(ReturnModle retModle) throws SQLException {
 
-        String sql ="INSERT INTO return_ (returnID, status, returnDate, NIC, damages, description) VALUES (?,?,?,?,?,?)";
+        String sql ="INSERT INTO return_(returnID, status, returnDate, NIC, damages, description) VALUES (?,?,?,?,?,?)";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -31,6 +31,8 @@ public class ReturnRepo {
         pstm.setString(6,retModle.getDesc());
 
       return pstm.executeUpdate()>0;
+
+
 
     }
 

@@ -210,8 +210,7 @@ public class ReturnFormController {
         RetutnFormModle retutnFormModle = new RetutnFormModle(returnModle, RetunList);
 
           try {
-
-           //  String NIC = txtNIC.getText();
+             String NIC = txtNIC.getText();
               boolean isOk = ReturnFormRepo.SetReturn(retutnFormModle);
               if (isOk ) {
                   retList.clear();
@@ -220,17 +219,19 @@ public class ReturnFormController {
                   loadAllReservations();
                   getCurrentID();
                   clearFields();
-                  txtNIC.setDisable(false);
+                 txtNIC.setDisable(false);
 
 
               }else {
                   new Alert(Alert.AlertType.ERROR,"Can 't Return ").show();
                   clearFields();
+                  loadAllReservations();
+                  txtNIC.setDisable(false);
 
               }
 
           } catch (SQLException e) {
-              throw new RuntimeException(e);
+              new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
           }
 
     }
@@ -302,7 +303,7 @@ public class ReturnFormController {
 
     public  void  setCmbDamage(){
 
-        ObservableList<String> list = FXCollections.observableArrayList("Yes", "No", "Hard Damage");
+        ObservableList<String> list = FXCollections.observableArrayList("Yes", "No", "Hard Damage","Pending");
         cmbDamge.setItems(list);
 
     }

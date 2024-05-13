@@ -1,6 +1,7 @@
 package repository;
 
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
+import model.DashBoardModle;
 import model.PaymentModle;
 import model.VehicleModle;
 
@@ -35,7 +36,7 @@ public class PaymentRepo {
 
 
     public static boolean savePayment(PaymentModle paymentModel) throws SQLException {
-        String sql = "INSERT INTO payment VALUES (?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO payment VALUES (?, ?, ?, ?, ?, ?,?,?,?)";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -46,6 +47,8 @@ public class PaymentRepo {
         pstm.setObject(5, paymentModel.getReservationID());
         pstm.setObject(6, paymentModel.getPaydate());
         pstm.setObject(7,paymentModel.getPaymentMethod());
+        pstm.setObject(8,paymentModel.getAdvancedPay());
+        pstm.setObject(9,paymentModel.getBalancedPay());
 
         return pstm.executeUpdate() > 0;
     }
@@ -54,6 +57,7 @@ public class PaymentRepo {
 
     public static List<PaymentModle> getAllPayments() throws SQLException {
         String sql = "SELECT * FROM payment";
+
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -70,8 +74,11 @@ public class PaymentRepo {
             String reservationID = resultSet.getString("reservationID");
             LocalDate paymentDate = resultSet.getDate("paymentDate").toLocalDate();
             String paymentMethod = resultSet.getString("paymentMethod");
+            double advanced = resultSet.getDouble("advanced_payment");
+            double balancded = resultSet.getDouble("balance_payment");
 
-            PaymentModle payment = new PaymentModle(paymentID, status, type, fullPayment, reservationID, paymentDate,paymentMethod);
+
+            PaymentModle payment = new PaymentModle(paymentID, status, type, fullPayment, reservationID, paymentDate,paymentMethod,advanced,balancded);
             paymentList.add(payment);
         }
         return paymentList;
@@ -81,7 +88,7 @@ public class PaymentRepo {
 
     public static List<PaymentModle> getPaymentsByNIC(String NIC) throws SQLException {
         List<PaymentModle> paymentList = new ArrayList<>();
-        String sql = "SELECT * FROM payment WHERE reservationID IN (SELECT reservationID FROM reservation WHERE NIC = ?)";
+        String sql = "SELECT * FROM payment WHERE status ='Pending' AND reservationID IN (SELECT reservationID FROM reservation WHERE NIC = ?)";
 
 
         Connection connection = DBconnection.getInstance().getConnection();
@@ -97,7 +104,10 @@ public class PaymentRepo {
                             resultSet.getDouble("fullpayment"),
                             resultSet.getString("reservationID"),
                             resultSet.getDate("paymentDate").toLocalDate(), // Assuming paymentDate is a date type
-                            resultSet.getString("paymentMethod")
+                            resultSet.getString("paymentMethod"),
+                            resultSet.getDouble("advanced_payment"),
+                            resultSet.getDouble("balance_payment")
+
                     );
                     paymentList.add(paymentModel);
                 }
@@ -124,6 +134,45 @@ public class PaymentRepo {
             return pstmt.executeUpdate() > 0;
 
         }
+
+
+
+
+
+
+    public static   int getPendingPayment( PaymentModle pay) throws SQLException {
+
+        String sql = "SELECT COUNT(*) AS PendingPayment FROM payment WHERE status = 'Pending' ";
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        if(resultSet.next()){
+            return  resultSet.getInt("PendingPayment");
+        }
+        return  0;
+    }
+
+
+
+
+    public static int getCompletePayment( PaymentModle pay) throws SQLException {
+
+        String sql = "SELECT COUNT(*) AS CompletePayment FROM payment WHERE status = 'Completed' ";
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        if(resultSet.next()){
+            return  resultSet.getInt("CompletePayment");
+        }
+        return  0;
+    }
+
 
     }
 

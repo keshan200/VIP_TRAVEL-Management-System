@@ -18,4 +18,6 @@ public class PaymentTM {
     private String reservationID;
     private LocalDate Paydate;
     private String paymentMethod;
+    private  double advancedPay;
+    private  double balancedPay;
 }

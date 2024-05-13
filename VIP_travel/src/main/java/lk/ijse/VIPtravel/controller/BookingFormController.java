@@ -90,16 +90,15 @@ public class BookingFormController {
     ObservableList<CartTM> resList = FXCollections.observableArrayList();
 
 
-
     public void initialize() {
         getAvailableVehicleNames();
         calculateDaysCount();
         getCurrentBookingId();
         calculateNetTotal();
         setCellVFactory();
-      loadAllReservations();
-      setDate();
-    //  showSelectedVehicleDetails();
+        loadAllReservations();
+        setDate();
+        //  showSelectedVehicleDetails();
     }
 
 
@@ -122,7 +121,6 @@ public class BookingFormController {
 
         }
     }*/
-
 
 
     private void setCellVFactory() {
@@ -187,17 +185,6 @@ public class BookingFormController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     private void loadReservationsForCustomer(String NIC) throws SQLException {
         List<CartTM> reservationList = new ArrayList<>();
         List<BookingDetailsModle> bookingDetailsList = BookingDetailsRepo.getBookingDetailsByNIC(NIC);
@@ -252,9 +239,8 @@ public class BookingFormController {
     }
 
 
-
     private void getAvailableVehicleNames() {
-     ObservableList<String> obList = FXCollections.observableArrayList();
+        ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
             List<String> nameList = VehicleRepo.getAllAvailableVehicles();
@@ -269,7 +255,6 @@ public class BookingFormController {
         }
 
     }
-
 
 
     private void calculateNetTotal() {
@@ -310,8 +295,6 @@ public class BookingFormController {
         }
 
 
-
-
     }
 
 
@@ -349,8 +332,6 @@ public class BookingFormController {
         });
 
 
-
-
         if (!resList.isEmpty()) {
             for (int i = 0; i < resList.size(); i++) {
                 if (regNo.equals(colRegNo.getCellData(i))) {
@@ -367,9 +348,9 @@ public class BookingFormController {
         txtNIC.setDisable(true);// cant add multiple customer in same reservationID
 
         CartTM tm = new CartTM(resID, regNo, startDate, endDate, days, totalCost, remove);
-               resList.add(tm);
-               tblReservation.setItems(resList);
-               calculateNetTotal();
+        resList.add(tm);
+        tblReservation.setItems(resList);
+        calculateNetTotal();
 
         txtRegNo.setText("");
         txtDayCount.setText("");
@@ -382,10 +363,20 @@ public class BookingFormController {
     }
 
 
-public  void setDate(){
-    LocalDate now = LocalDate.now();
-    txtDate.setText(String.valueOf(now));
-}
+    public void setDate() {
+        LocalDate now = LocalDate.now();
+        txtDate.setText(String.valueOf(now));
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -409,7 +400,45 @@ public  void setDate(){
             new Alert(Alert.AlertType.ERROR, "No reservation ID found!").show();
         }
 
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

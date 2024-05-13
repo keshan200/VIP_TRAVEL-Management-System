@@ -24,7 +24,7 @@ public class ReturnDetailsRepo  {
     }
 
     private static boolean saveDetails(ReturnDetailsModle returnDetail) throws SQLException {
-        String sql = "INSERT INTO returndetails (returnID, regNo) VALUES (?,  ?)";
+        String sql = "INSERT INTO returndetails (returnID, regNo) VALUES (?, ?)";
 
         PreparedStatement pstm = DBconnection.getInstance().getConnection().prepareStatement(sql);
 

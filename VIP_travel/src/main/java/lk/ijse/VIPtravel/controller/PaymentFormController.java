@@ -6,8 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.DashBoardModle;
 import model.PaymentModle;
 import model.TM.PaymentTM;
+import repository.DashboardRepo;
 import repository.PaymentRepo;
 import repository.ReservationRepo;
 import repository.VehicleRepo;
@@ -18,6 +20,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class PaymentFormController {
+
+    @FXML
+    private TableColumn<?, ?> colBalanc;
+
+    @FXML
+    private TableColumn<?, ?> colAdvanced;
 
     @FXML
     private TableColumn<?, ?> colAmount;
@@ -64,6 +72,17 @@ public class PaymentFormController {
     @FXML
     private Label lblDate;
 
+    @FXML
+    private TextField txtBalancce;
+
+    @FXML
+    private TextField txtAdvaced;
+    @FXML
+    private Label lblPending;
+
+    @FXML
+    private Label lblComplete;
+
 
 
     public void initialize(){
@@ -76,7 +95,27 @@ public class PaymentFormController {
         loadAllPayments();
         showSelectedPaymentDetails();
         setPaymentCellValues();
+        setCompletePayment();
+        setPendingPayment();
+        clear();
     }
+
+
+
+
+
+
+    public  void clear(){
+        txtAmount.setText("");
+        txtBalancce.setText("");
+        txtAdvaced.setText("");
+        cmbType.setValue("");
+        cmbStatus.setValue("");
+        cmbPaymentMethod.setValue("");
+
+
+    }
+
 
 
     public void setCmbType(){
@@ -147,15 +186,19 @@ public class PaymentFormController {
         String reservationID = txtReservationID.getText();
         LocalDate paymentDate = LocalDate.parse(lblDate.getText());
         String PaymentMethod = cmbPaymentMethod.getValue();
+        double AdvancedPay = Double.parseDouble(txtAdvaced.getText());
+        double balancedPay = Double.parseDouble(txtBalancce.getText());
 
 
-        PaymentModle paymentModel = new PaymentModle(paymentid, status, type, fullPayment, reservationID, paymentDate,PaymentMethod);
+        PaymentModle paymentModel = new PaymentModle(paymentid, status, type, fullPayment, reservationID, paymentDate,PaymentMethod,AdvancedPay,balancedPay);
 
         try {
             boolean isSaved = PaymentRepo.savePayment(paymentModel);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment saved successfully!").show();
               loadAllPayments();
+              refreshCounts();
+              clear();
 
 
             }
@@ -177,6 +220,9 @@ public class PaymentFormController {
             txtReservationID.setText(selectedPayment.getReservationID());
             lblDate.setText(String.valueOf(selectedPayment.getPaydate()));
             cmbPaymentMethod.setValue(selectedPayment.getPaymentMethod());
+            txtAdvaced.setText(String.valueOf(selectedPayment.getAdvancedPay()));
+            txtBalancce.setText(String.valueOf(selectedPayment.getBalancedPay()));
+
         }
     }
 
@@ -186,7 +232,9 @@ public class PaymentFormController {
         colPayType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colPayMethod.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("fullPayment"));
-       colDate.setCellValueFactory(new PropertyValueFactory<>("Paydate"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("Paydate"));
+        colAdvanced.setCellValueFactory(new PropertyValueFactory<>("advancedPay"));
+        colBalanc.setCellValueFactory(new PropertyValueFactory<>("balancedPay"));
     }
 
     private void loadAllPayments() {
@@ -203,7 +251,9 @@ public class PaymentFormController {
                         paymentModel.getFullPayment(),
                         paymentModel.getReservationID(),
                         paymentModel.getPaydate(),
-                        paymentModel.getPaymentMethod()
+                        paymentModel.getPaymentMethod(),
+                        paymentModel.getAdvancedPay(),
+                        paymentModel.getBalancedPay()
                 );
 
                 paymentList.add(paymentTM);
@@ -215,6 +265,22 @@ public class PaymentFormController {
         }
     }
 
+
+
+
+    @FXML
+    void txtAdavacedToCalBalanced(ActionEvent event) {
+
+        double fullAmount = Double.parseDouble(txtAmount.getText());
+        double advanced = Double.parseDouble(txtAdvaced.getText());
+
+        double balaced = fullAmount - advanced;
+        txtBalancce.setText(String.valueOf(balaced));
+
+
+
+
+    }
 
    public void NicOnAction(ActionEvent event) {
        String NIC = txtNIC.getText().trim();
@@ -249,7 +315,9 @@ public class PaymentFormController {
                     paymentModel.getFullPayment(),
                     paymentModel.getReservationID(),
                     paymentModel.getPaydate(),
-                    paymentModel.getPaymentMethod()
+                    paymentModel.getPaymentMethod(),
+                    paymentModel.getAdvancedPay(),
+                    paymentModel.getBalancedPay()
             );
             tblPayment.getItems().add(paymentTM);
         }
@@ -268,6 +336,8 @@ public class PaymentFormController {
             boolean isSaved = PaymentRepo.update(paymentId,fullpayment,type,status);
             if (isSaved) {
                  new Alert(Alert.AlertType.CONFIRMATION,"Payment updated successfully!").show();
+                 loadAllPayments();
+                 refreshCounts();
             }else{
                 new Alert(Alert.AlertType.ERROR,"Failed to update payment!").show();
             }
@@ -277,4 +347,67 @@ public class PaymentFormController {
             throw new RuntimeException(e);
         }
 }
+
+
+
+    public void setCompletePayment()  {
+
+        try {
+            PaymentRepo paymentRepo = new PaymentRepo();
+            PaymentModle paymentModle = new PaymentModle();
+
+            int completePayment = paymentRepo.getCompletePayment(paymentModle);
+            lblComplete.setText(String.valueOf(completePayment));
+
+
+        }catch (SQLException i){
+            i.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+    public void setPendingPayment()  {
+        try {
+            PaymentRepo paymentRepo = new PaymentRepo();
+            PaymentModle paymentModle = new PaymentModle();
+
+            int PendingPayment = paymentRepo.getPendingPayment(paymentModle);
+            lblPending.setText(String.valueOf(PendingPayment));
+
+
+        }catch (SQLException i){
+            i.printStackTrace();
+        }
+
+    }
+
+    private void refreshCounts() {
+        try {
+            PaymentRepo paymentRepo = new PaymentRepo();
+            PaymentModle paymentModle = new PaymentModle();
+
+            int completePayment = paymentRepo.getCompletePayment(paymentModle);
+            lblComplete.setText(String.valueOf(completePayment));
+
+            int pendingPayment = paymentRepo.getPendingPayment(paymentModle);
+            lblPending.setText(String.valueOf(pendingPayment));
+
+        } catch (SQLException i) {
+            i.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void btnPrintBill(ActionEvent event) {
+
+
+
+    }
+
+
 }

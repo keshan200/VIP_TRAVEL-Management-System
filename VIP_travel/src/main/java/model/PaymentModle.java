@@ -20,6 +20,8 @@ public class PaymentModle {
     private String reservationID;
     private LocalDate Paydate;
     private String paymentMethod;
+    private  double advancedPay;
+    private  double balancedPay;
 
 
 }
