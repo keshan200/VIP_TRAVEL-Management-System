@@ -8,16 +8,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
 import model.TM.CartTM;
 import model.TM.ReturnTM;
 import repository.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -306,7 +311,13 @@ public class ReturnFormController {
 
 
     @FXML
-    void btnUpdate(ActionEvent event) {
+    void btnPayment(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewForms/SubForms/PaymentForm.fxml"));
+        Parent load = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.show();
 
     }
 

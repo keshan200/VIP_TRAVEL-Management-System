@@ -107,8 +107,14 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="689.0" layoutY="395.0" onAction="#btnAdd" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-border-radius: 20; -fx-background-radius: 20;" text="Add" />
-      <JFXButton layoutX="834.0" layoutY="395.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Update" />
+      <JFXButton layoutX="689.0" layoutY="395.0" onAction="#btnAdd" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-border-radius: 20; -fx-background-radius: 20;" text="Add">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="834.0" layoutY="395.0" onAction="#btnPayment" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="Payment">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></JFXButton>
       <JFXButton layoutX="479.0" layoutY="378.0" onAction="#btnConfirm" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="       Add Cart">
          <font>
             <Font name="System Bold" size="14.0" />

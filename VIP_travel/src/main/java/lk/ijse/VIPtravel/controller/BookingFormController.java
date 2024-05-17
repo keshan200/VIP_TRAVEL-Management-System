@@ -409,39 +409,6 @@ public class BookingFormController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public  void clearFields(){
         txtReservationID.setText("");
         txtRegNo.setText("");
