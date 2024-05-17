@@ -1,0 +1,109 @@
+
+CREATE TRIGGER add_vehicle_id_before_insert
+BEFORE INSERT ON insurance
+FOR EACH ROW
+BEGIN
+    DECLARE vehicle_id VARCHAR(10);
+    SELECT vehicleID INTO vehicle_id
+    FROM vehicle
+    WHERE regNo = NEW.regNO;
+    SET NEW.vehicleID = vehicle_id;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //---when delete vehicle automatically delete insurance
+
+CREATE TRIGGER delete_insurance_after_vehicle_delete
+AFTER DELETE ON vehicle
+FOR EACH ROW
+BEGIN
+    DELETE FROM insurance WHERE regNO = OLD.regNo;
+END;
+//
+
+DELIMITER ;
+
+
+
+DELIMITER // vehicle eka add karama booking ekat suitable vehicle ele stutes eka not available wateno
+
+CREATE TRIGGER update_vehicle_availability
+AFTER INSERT ON bookingDetails
+FOR EACH ROW
+BEGIN
+    UPDATE vehicle
+    SET availability = 'Not Available'
+    WHERE vehicleID = NEW.vehicleID;
+END;
+//
+
+DELIMITER ;
+
+
+
+
+DELIMITER //  Get the suitable vehicle ID based on the provided regNo
+
+CREATE TRIGGER assign_vehicle_id
+BEFORE INSERT ON bookingDetails
+FOR EACH ROW
+BEGIN
+
+    SET NEW.vehicleID = (SELECT vehicleID FROM vehicle WHERE regNo = NEW.regNo AND availability = 'Available' LIMIT 1);
+END;
+//
+
+DELIMITER ;
+
+
+
+DELIMITER // reservation eke customer NIC eka add karama auto NIC ekata suitable CustomerId eka insert venawa reservation table ekat
+
+CREATE TRIGGER assign_customer_id_Reservation
+BEFORE INSERT ON reservation
+FOR EACH ROW
+BEGIN
+
+    SET NEW.customerID = (SELECT customerID FROM customer WHERE NIC = NEW.NIC LIMIT 1) ;
+END;
+//
+
+DELIMITER ;
+
+
+
+
+
+DELIMITER //   return detials eke regNo eka insert karam auto suitable vehicle id eka insert wenawa
+
+
+CREATE TRIGGER populate_vehicle_id
+BEFORE INSERT ON returndetails
+FOR EACH ROW
+BEGIN
+    DECLARE v_vehicle_id VARCHAR(5);
+    SELECT vehicleID INTO v_vehicle_id FROM vehicle WHERE regNo = NEW.regNo;
+    SET NEW.vehicleID = v_vehicle_id;
+END;
+//
+
+DELIMITER ;
+
+
+
+DELIMITER // return table eke NIC eka insert karam auto suitable customerID eka table ekata insert wenawaa
+
+CREATE TRIGGER populate_customer_id
+BEFORE INSERT ON return_
+FOR EACH ROW
+BEGIN
+    DECLARE v_customer_id VARCHAR(5);
+    SELECT customerID INTO v_customer_id FROM customer WHERE NIC = NEW.NIC;
+    SET NEW.customerID = v_customer_id;
+END;
+//
+
+DELIMITER ;

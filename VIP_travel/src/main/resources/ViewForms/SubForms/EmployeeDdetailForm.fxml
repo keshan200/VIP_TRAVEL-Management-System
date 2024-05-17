@@ -23,7 +23,7 @@
       </ImageView>
       <TextField fx:id="txtuserID" layoutX="40.0" layoutY="486.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
       <TextField fx:id="txtNIC" layoutX="41.0" layoutY="258.0" onAction="#NicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Button layoutX="420.0" layoutY="486.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="         Register Now">
+      <Button layoutX="420.0" layoutY="467.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="         Register Now">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
@@ -49,7 +49,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="433.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="433.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/registerNow.png" />
          </image>
@@ -82,5 +82,15 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <Button layoutX="420.0" layoutY="528.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="Update">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="420.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="Delete Account">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

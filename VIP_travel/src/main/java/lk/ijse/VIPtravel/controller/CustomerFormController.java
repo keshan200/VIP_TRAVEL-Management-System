@@ -153,9 +153,8 @@ private  void setcellValues(){
 
         CustomerModle customerModle = new CustomerModle(customerID, NIC, name, telNo, adrs);
         boolean Vaild = isValied();
-        boolean vaildNIC = isValidNic();
         try {
-            if (Vaild &&  vaildNIC) {
+            if (Vaild ) {
 
 
                 boolean isSaved = CustomerRepo.Add(customerModle);
@@ -216,16 +215,16 @@ private  void setcellValues(){
     }
 
     @FXML
-    void btnUpdate(ActionEvent event) {
+    void btnUpdate(ActionEvent event) throws SQLException {
 
-        String cusID = txtCustomerID.getText();
+        String NIC = txtNIC.getText();
         String name = txtName.getText();
         int telNO = Integer.parseInt(txtTelNO.getText());
         String adrs = txtAddrs.getText();
 
-        CustomerModle cusmodle = new CustomerModle(cusID,name,telNO,adrs);
+        CustomerModle cusmodle = new CustomerModle(NIC,name,telNO,adrs);
 
-        try{
+
             boolean isUpdate = CustomerRepo.Update(cusmodle);
             if (isUpdate) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer Updated Sucsesssfully!").show();
@@ -236,9 +235,7 @@ private  void setcellValues(){
                 new Alert(Alert.AlertType.ERROR, "Can't Update").show();
             }
 
-        }catch (Exception e){
-            throw  new RuntimeException(e);
-        }
+
 
         }
 
@@ -249,10 +246,6 @@ private  void setcellValues(){
 
     }
 
-     public  boolean isValidNic(){
-         if (!Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.NIC, txtNIC)) return false;
-         return true;
-     }
 
 
     @FXML
@@ -283,9 +276,5 @@ private  void setcellValues(){
     }
 
 
-    @FXML
 
-    public void txtNIConAction(javafx.scene.input.KeyEvent keyEvent) {
-        Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.NIC,txtNIC);
-    }
 }

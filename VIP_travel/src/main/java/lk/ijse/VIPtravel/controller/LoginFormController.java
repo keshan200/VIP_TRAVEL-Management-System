@@ -104,7 +104,7 @@ public class LoginFormController {
 
     public void btnRegister(ActionEvent event) throws IOException {
 
-        FXMLLoader Regloader = new FXMLLoader(getClass().getResource("/ViewForms/RegisterFrom.fxml"));
+        FXMLLoader Regloader = new FXMLLoader(getClass().getResource("/ViewForms/RegFormMain.fxml"));
         Parent Regload = Regloader.load();
 
         Stage stage = new Stage();

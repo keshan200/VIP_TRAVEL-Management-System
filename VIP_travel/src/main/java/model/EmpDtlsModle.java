@@ -22,4 +22,12 @@ public class EmpDtlsModle {
     private  String email;
 
 
+    public EmpDtlsModle(String NIC,String address, int tp, String userID, String password, String email) {
+        this.NIC = NIC;
+        this.address=address;
+        this.tp=tp;
+        this.userID=userID;
+        this.password=password;
+        this.email=email;
+    }
 }

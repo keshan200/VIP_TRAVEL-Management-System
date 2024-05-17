@@ -77,7 +77,7 @@ public class EmployeeDdetailFormController {
 
     public void initialize() {
 
-      loadAllvehicles();
+      loadAllemp();
       setCellValues();
     }
 
@@ -127,7 +127,7 @@ public class EmployeeDdetailFormController {
     }
 
 
-    private void loadAllvehicles() {
+    private void loadAllemp() {
         ObservableList<EmpTm> obList = FXCollections.observableArrayList();
 
         try {
@@ -171,8 +171,7 @@ public class EmployeeDdetailFormController {
         try {
             boolean isSaved = EmployeeDetailsRepo.Save(empDtlsModle);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee saved!").show();loadAllemp();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -180,25 +179,50 @@ public class EmployeeDdetailFormController {
 
     }
 
-      /*  String empID = txtid.getText();
-        String NIC = txtNIC.getText();
-        String name = txtName.getText();
-        String address = txtAdress.getText();
-        String userID = txtuserID.getText();
-        String pass = txtPassword.getText();
+    @FXML
+    void btnUpdate(ActionEvent event) throws SQLException {
+
+        String Nic =txtNIC.getText();
+        String adrs = txtAdress.getText();
+        int Tp = Integer.parseInt(tp.getText());
+        String uID = txtuserID.getText();
+        String pas = txtPassword.getText();
         String email = txtemail.getText();
 
-        try {
-            RegisterFromRepo.addEmployee(empID, NIC, name, address, userID, pass, email);
+        EmpDtlsModle empDtlsModle = new EmpDtlsModle(Nic,adrs,Tp,uID,pas,email);
 
-
-            new Alert(Alert.AlertType.INFORMATION, "Material added successfully.");
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to add material.");
-            e.printStackTrace();
+        boolean isUpdated = EmployeeDetailsRepo.update(empDtlsModle);
+        if(isUpdated) {
+            new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+            clearFields();
+            loadAllemp();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Can't Update").show();
         }
 
-    }*/
+    }
+
+    @FXML
+    void btnDelete(ActionEvent event) {
+        String Nic = txtNIC.getText();
+        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this vehicle?").showAndWait();
+        try {
+            if (EmployeeDetailsRepo.delete(Nic)) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Vehicle Deleted Successfully").show();
+                clearFields();
+               loadAllemp();
+
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+
+
+
+
 }
 
 

@@ -90,4 +90,35 @@ public class EmployeeDetailsRepo {
         return  null;
     }
 
+    public static boolean delete(String  NIC) throws SQLException {
+
+        String sql = "delete from employee where employe_NIC =?";
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement ptsm = connection.prepareStatement(sql);
+        ptsm.setObject(1,NIC);
+
+        return  ptsm.executeUpdate()>0;
+
+    }
+
+    public static boolean update(EmpDtlsModle nic) throws SQLException {
+        String sql = "UPDATE employee SET address = ?, TP = ?,userID= ?,password = ?,email= ? WHERE employe_NIC = ?";
+
+        Connection connection = DBconnection.getInstance().getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+
+        pstmt.setString(1, nic.getAddress());
+        pstmt.setInt(2, nic.getTp());
+        pstmt.setString(3, nic.getUserID());
+        pstmt.setString(4, nic.getPassword());
+        pstmt.setString(5, nic.getEmail());
+        pstmt.setString(6, nic.getNIC());
+
+
+
+        return pstmt.executeUpdate() > 0;
+
+    }
+
 }

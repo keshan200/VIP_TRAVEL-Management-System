@@ -50,13 +50,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tblVehicleAvailable" layoutX="38.0" layoutY="410.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green;">
-         <columns>
-            <TableColumn fx:id="colAvailble" prefWidth="148.7999267578125" text="Available Vehicles" />
-            <TableColumn fx:id="colCount" prefWidth="82.39999389648438" text="Count" />
-            <TableColumn fx:id="colPrice" prefWidth="126.39999999999998" text="Price per Day" />
-         </columns>
-      </TableView>
       <AnchorPane layoutX="75.0" layoutY="65.0" prefHeight="116.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
          <children>
             <Label layoutX="48.0" layoutY="7.0" prefHeight="32.0" prefWidth="146.0" text="Vehicle Count">
@@ -89,13 +82,13 @@
                   <Image url="@../../Images/vanIcon.png" />
                </image>
             </ImageView>
+            <Label fx:id="lblVan" layoutX="190.0" layoutY="80.0" prefHeight="43.0" prefWidth="43.0" text="12">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="lblVan" layoutX="264.0" layoutY="148.0" prefHeight="43.0" prefWidth="43.0" text="12">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
       <AnchorPane layoutX="75.0" layoutY="233.0" prefHeight="116.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
          <children>
             <Label layoutX="35.0" prefHeight="40.0" prefWidth="200.0" text="Total Bookings">
@@ -113,6 +106,17 @@
                   <Image url="@../../Images/resevation%20colour.png" />
                </image>
             </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="45.0" layoutY="417.0" prefHeight="254.0" prefWidth="412.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <TableView fx:id="tblVehicleAvailable" layoutX="27.0" layoutY="11.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green; -fx-background-color: black; -fx-background-radius: 50;">
+               <columns>
+                  <TableColumn fx:id="colAvailble" prefWidth="148.7999267578125" style="-fx-background-radius: 30; -fx-background-color: white;" text="Available Vehicles" />
+                  <TableColumn fx:id="colCount" prefWidth="82.39999389648438" style="-fx-background-radius: 30; -fx-background-color: white;" text="Count" />
+                  <TableColumn fx:id="colPrice" prefWidth="126.39999999999998" style="-fx-background-radius: 30; -fx-background-color: white;" text="Price per Day" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
