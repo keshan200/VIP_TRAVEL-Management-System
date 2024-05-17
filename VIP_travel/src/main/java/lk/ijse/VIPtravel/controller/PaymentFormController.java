@@ -6,18 +6,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.DashBoardModle;
 import model.PaymentModle;
 import model.TM.PaymentTM;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import repository.DashboardRepo;
 import repository.PaymentRepo;
 import repository.ReservationRepo;
 import repository.VehicleRepo;
 
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PaymentFormController {
 
@@ -403,9 +411,20 @@ public class PaymentFormController {
 
 
     @FXML
-    void btnPrintBill(ActionEvent event) {
+    void btnPrintBill(ActionEvent event) throws JRException, SQLException {
+
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Report/Payment.jrxml");
+        JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+        String resID = txtReservationID.getText();
+        data.put("ResID", resID);
+        String nic = txtNIC.getText();  data.put("endDate", nic);
 
 
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DBconnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
 
     }
 

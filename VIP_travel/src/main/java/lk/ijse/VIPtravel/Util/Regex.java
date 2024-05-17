@@ -5,6 +5,43 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
+
+
+    /* String nic = "adfsfs"; // Example NIC number
+        if (nic.matches("^\\d{9}[VvXx]?$")) {
+            System.out.println("NIC is valid");
+        } else {
+            new Alert(Alert.AlertType.ERROR, "invailid").show();
+        }
+
+
+        String regNumber = "58854"; // Example vehicle registration number
+        if (regNumber.matches("^[A-Za-z]{2,3}-\\d{3,4}$")) {
+            System.out.println("Vehicle registration number is valid");
+        } else {
+            System.out.println("Vehicle registration number is invalid");
+        }
+
+        String year = "2024"; // Example year
+        if (year.matches("^(19|20)\\d{2}$")) {
+            System.out.println("Year is valid");
+        } else {
+            System.out.println("Year is invalid");
+        }
+
+
+        String price = "99.99"; // Example price
+        if (price.matches("^\\d+(\\.\\d{1,2})?$")) {
+            System.out.println("Price is valid");
+        } else {
+            System.out.println("Price is invalid");
+        }
+
+
+      //  ^(?!-)\d+(\.\d{1,2})?$   cant add negative number
+*/
+
+
     public static boolean isTextFieldValid(TextField textField, String text){
         String field = "";
 
@@ -18,6 +55,9 @@ public class Regex {
                 break;
             case EMAIL:
                 field = "^([A-z])([A-z0-9.]){1,}[@]([A-z0-9]){1,10}[.]([A-z]){2,5}$";
+                break;
+            case NIC:
+                field = "^\\\\d{9}[VvXx]?$";
                 break;
 
         }
@@ -42,45 +82,6 @@ public class Regex {
     }
 
 
-
-    /*public static void addMaterial(String materialName, int qty, String supplierName, Date date, double unitPrice, int rawMaterialId) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        connection.setAutoCommit(false);
-
-        try {
-
-            String insertRawMaterialSql = "INSERT INTO RawMaterial (RawMaterialID, Name, Quantity) VALUES (?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertRawMaterialSql);
-            try {
-                preparedStatement.setInt(1, rawMaterialId);
-                preparedStatement.setString(2, materialName);
-                preparedStatement.setInt(3, qty);
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-
-            String insertSupplierDetailSql = "INSERT INTO SupplierDetail (RawMaterialID, SupplierID, Date, Price) VALUES (?, (SELECT SupplierID FROM Supplier WHERE Name = ?), ?, ?)";
-            PreparedStatement preparedStatement1 = connection.prepareStatement(insertSupplierDetailSql);
-            try  {
-                preparedStatement1.setInt(1, rawMaterialId);
-                preparedStatement1.setString(2, supplierName);
-                preparedStatement1.setDate(3, date);
-                preparedStatement1.setDouble(4, unitPrice);
-                preparedStatement1.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-            connection.commit();
-        } catch (SQLException e) {
-            connection.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            connection.setAutoCommit(true);
-
-        }*/
 
     public static boolean setTextColor(TextField location, javafx.scene.control.TextField textField) {
         if (Regex.isTextFieldValid(location, textField.getText())) {

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Payment" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c92547e5-b487-404c-88ce-d94b8a5dd8fc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (9)"/>
+	<parameter name="ResID" class="java.lang.String"/>
+	<parameter name="endDate" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    p.paymentID, 
+    p.status, 
+    p.paymentDate, 
+    p.fullpayment, 
+    p.advanced_payment AS advancedPayment, 
+    p.balance_payment AS balance, 
+    p.type, 
+    p.paymentMethod, 
+    c.NIC, 
+    c.name AS CustomerName, 
+    v.vehicleName, 
+    v.regNo, 
+  bd.fullCost,
+    bd.endDate
+FROM 
+    payment AS p
+JOIN 
+    reservation AS r ON p.reservationID = r.reservationID
+JOIN 
+    customer AS c ON r.NIC = c.NIC
+JOIN 
+    bookingDetails AS bd ON r.reservationID = bd.reservationID
+JOIN 
+    vehicle AS v ON bd.vehicleID = v.vehicleID
+WHERE 
+     r.reservationID = $P{ResID}
+   and   c.NIC =$P{endDate}
+      AND p.paymentID IN (
+        SELECT 
+            MAX(paymentID)
+        FROM 
+            payment
+        GROUP BY 
+            reservationID
+    )]]>
+	</queryString>
+	<field name="paymentID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="paymentID"/>
+		<property name="com.jaspersoft.studio.field.label" value="paymentID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="paymentDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="paymentDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="paymentDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="fullpayment" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fullpayment"/>
+		<property name="com.jaspersoft.studio.field.label" value="fullpayment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="advancedPayment" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="advanced_payment"/>
+		<property name="com.jaspersoft.studio.field.label" value="advancedPayment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="balance" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="balance_payment"/>
+		<property name="com.jaspersoft.studio.field.label" value="balance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type"/>
+		<property name="com.jaspersoft.studio.field.label" value="type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="paymentMethod" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="paymentMethod"/>
+		<property name="com.jaspersoft.studio.field.label" value="paymentMethod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NIC"/>
+		<property name="com.jaspersoft.studio.field.label" value="NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="CustomerName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="CustomerName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="vehicleName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="vehicleName"/>
+		<property name="com.jaspersoft.studio.field.label" value="vehicleName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vehicle"/>
+	</field>
+	<field name="regNo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="regNo"/>
+		<property name="com.jaspersoft.studio.field.label" value="regNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vehicle"/>
+	</field>
+	<field name="endDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="endDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="endDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bookingdetails"/>
+	</field>
+	<field name="fullCost" class="java.lang.Double"/>
+	<group name="paymentID">
+		<groupExpression><![CDATA[$F{paymentID}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<group name="paymentDate">
+		<groupExpression><![CDATA[$F{paymentDate}]]></groupExpression>
+	</group>
+	<group name="fullpayment">
+		<groupExpression><![CDATA[$F{fullpayment}]]></groupExpression>
+	</group>
+	<group name="advancedPayment">
+		<groupExpression><![CDATA[$F{advancedPayment}]]></groupExpression>
+	</group>
+	<group name="balance">
+		<groupExpression><![CDATA[$F{balance}]]></groupExpression>
+	</group>
+	<group name="type">
+		<groupExpression><![CDATA[$F{type}]]></groupExpression>
+	</group>
+	<group name="paymentMethod">
+		<groupExpression><![CDATA[$F{paymentMethod}]]></groupExpression>
+	</group>
+	<group name="NIC">
+		<groupExpression><![CDATA[$F{NIC}]]></groupExpression>
+	</group>
+	<group name="CustomerName">
+		<groupExpression><![CDATA[$F{CustomerName}]]></groupExpression>
+	</group>
+	<group name="vehicleName">
+		<groupExpression><![CDATA[$F{vehicleName}]]></groupExpression>
+	</group>
+	<group name="regNo">
+		<groupExpression><![CDATA[$F{regNo}]]></groupExpression>
+	</group>
+	<group name="endDate">
+		<groupExpression><![CDATA[$F{endDate}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="-20" width="612" height="103" backcolor="#030000" uuid="dbaa40c4-b0f4-44d5-86ea-f32bc79dfb86"/>
+			</rectangle>
+			<image>
+				<reportElement x="0" y="-20" width="160" height="100" uuid="70cdc139-9b56-45dc-9d07-2d70f084375e"/>
+				<imageExpression><![CDATA["C:/Users/kesha/Documents/VIP TRAVEL Project/VIP_travel/src/main/resources/Images/logo copy.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="170" y="10" width="232" height="43" forecolor="#FFC517" uuid="9e2d3add-bc28-4916-adaf-48d603114ddb"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[No,564 B/1, 2nd Kurana Colombo Rd, Negombo., Kurana, Sri Lanka]]></text>
+			</staticText>
+			<line>
+				<reportElement x="410" y="-10" width="1" height="79" forecolor="#FFCD05" uuid="07c530f4-ce63-4891-acdb-9e5069551c2c"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="285" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="500" height="60" uuid="8c8a6c35-1c4a-40f6-bb54-6ee36cb0901b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<text><![CDATA[You will love our extensive selection of Luxury & Semi Luxury vehicles affordable & safety]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-10" y="60" width="590" height="1" uuid="2f8b93d1-61aa-4666-ab1d-aaa3912ea41e"/>
+			</line>
+			<textField>
+				<reportElement x="100" y="82" width="90" height="19" uuid="76f95661-ca7f-49da-9943-f4e27e648588"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paymentID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="81" width="99" height="19" uuid="c26111ac-a4b0-490e-aad1-cb750fd3eff7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paymentDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="81" width="90" height="20" uuid="c62cd58d-a8db-46f4-b85a-9d4dedfd1ec1"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Payment ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="80" width="50" height="19" uuid="88ba1abe-2d72-4156-adf1-70a9eb330fc5"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="120" width="59" height="19" uuid="aa2d0209-4b99-49f6-a4a1-f118667b6036"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="120" width="59" height="20" uuid="c6118c73-29b5-41dd-a36e-7fa5a177dd47"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Status :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="80" height="30" uuid="02ead3d8-93dd-41cf-a54a-a9d352daf800">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="505375dc-f245-468a-b76c-51b374582276"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[NIC :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="159" width="80" height="30" uuid="3c3772c4-2ea0-4ed0-b810-3ba227f9e28d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="505375dc-f245-468a-b76c-51b374582276"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NIC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="200" width="120" height="30" uuid="d113ea36-37e4-4f9f-a3cf-af99afb6ae10">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8a8b8e6c-4aeb-48fc-86cc-67f90944f9e3"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Customer Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="200" width="120" height="30" uuid="f3ed19cf-e97b-4134-af18-297b3e721b6c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8a8b8e6c-4aeb-48fc-86cc-67f90944f9e3"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CustomerName}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-20" y="251" width="612" height="29" backcolor="#030000" uuid="285e965b-acc0-4c71-a14c-00b1902d7404"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="40" width="100" height="30" uuid="1580a52a-e5a7-4aae-8cf6-9ccd1cd9c538">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="158042bb-7344-4c3e-adc1-c21a8940a168"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[vehicle Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="40" width="100" height="30" uuid="1ab4818c-6c6b-4e0b-ad55-f46f0966031f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca928fb6-b6d9-4d07-92c9-557637139f75"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[regNo]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="70" width="580" height="1" uuid="76d95b91-c5df-4deb-882d-2d1828a5ff4b"/>
+			</line>
+			<staticText>
+				<reportElement x="480" y="38" width="100" height="30" uuid="5122c095-97a3-4eeb-aa08-1097e80009f8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47ac671f-02dd-456f-bfdc-03c940f80d9c"/>
+				</reportElement>
+				<text><![CDATA[endDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="41" width="100" height="30" uuid="e2311466-004a-4513-9d6f-5b3ffe91c294">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9816761f-d590-4a0d-b703-d27699dce399"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[fullCost]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="e944e4bb-23c5-47e7-8955-afc1cd323940">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="158042bb-7344-4c3e-adc1-c21a8940a168"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vehicleName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="100" height="30" uuid="e9a70d65-7def-416f-bb6e-dc290ed043a8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca928fb6-b6d9-4d07-92c9-557637139f75"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{regNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="30" uuid="94f48785-a785-43e4-b532-52603d0de2b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47ac671f-02dd-456f-bfdc-03c940f80d9c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="1bde721c-62f7-424b-933f-65f88da61521">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9816761f-d590-4a0d-b703-d27699dce399"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fullCost}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="140" splitType="Stretch">
+			<textField>
+				<reportElement x="420" y="20" width="160" height="30" uuid="e71a7bb9-2414-4f7f-af78-89cb1d939a93"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullpayment}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="20" width="122" height="30" uuid="2ea4bb06-7714-494a-8748-3d506999640e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Net Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="60" width="150" height="30" uuid="fd7adadb-30a3-4f26-b95f-8f97167076ab"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{advancedPayment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="105" width="100" height="30" uuid="b4797393-691b-462d-93c1-25b46e161e6a"/>
+				<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="230" y="60" width="172" height="30" uuid="702fea31-312e-4d5f-9526-54eb2d5ca8ec"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Advanced Payment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="105" width="172" height="30" uuid="2eeedaad-f9d3-4385-81da-8d0b7aac45ff"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Balance Payment]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="71" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="612" height="70" backcolor="#030000" uuid="7408dc7c-ee71-4c46-bb17-0aadb463c2be"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="220" y="21" width="120" height="30" forecolor="#FFC517" uuid="c884d61f-99e1-44bb-80e4-6e8b15fd9f17"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Thank You !!]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="10" width="100" height="30" uuid="849e68a1-ba48-40cb-8c68-bba226ccfe70"/>
+				<textFieldExpression><![CDATA[$P{ResID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="10" width="100" height="30" uuid="c5fb23ff-de72-4f59-afe8-2086ab9ceb33"/>
+				<textFieldExpression><![CDATA[$P{endDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

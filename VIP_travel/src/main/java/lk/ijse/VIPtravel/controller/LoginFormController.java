@@ -57,7 +57,7 @@ public class LoginFormController {
     }
 
     public void checkCredential(String userID, String password, Stage stage) throws SQLException, IOException {
-        String sql = "SELECT userID, password FROM user WHERE userID = ?";
+        String sql = "SELECT userID, password FROM employee WHERE userID = ?";
 
         Connection connection = DBconnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class LoginFormController {
     }
 
     public void navigateDashboard(String userID, Stage stage) throws IOException, SQLException {
-        String sqlgetName = "SELECT employee.name FROM user JOIN employee ON user.userID = employee.userID WHERE user.userID = ?";
+        String sqlgetName = "select name from employee where userID=?";
         Connection con = DBconnection.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sqlgetName);
         ps.setString(1, userID);

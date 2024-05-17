@@ -16,50 +16,46 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="204.0" layoutX="386.0" layoutY="439.0" stroke="#ffbe09" strokeType="INSIDE" width="586.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="342.0" layoutX="346.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="646.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="661.0" layoutX="22.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="308.0" />
-      <ImageView fitHeight="111.0" fitWidth="112.0" layoutX="55.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="101.0" fitWidth="97.0" layoutX="121.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/male%20usere.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtuserID" layoutX="41.0" layoutY="469.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtid" layoutX="189.0" layoutY="48.0" prefHeight="68.0" prefWidth="122.0" promptText="ssdd" style="-fx-background-color: black;" text="E001">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font></TextField>
-      <TextField fx:id="txtNIC" layoutX="41.0" layoutY="308.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtuserID" layoutX="40.0" layoutY="486.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtNIC" layoutX="41.0" layoutY="258.0" onAction="#NicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
       <Button layoutX="420.0" layoutY="486.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="         Register Now">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <TextField fx:id="txtName" layoutX="41.0" layoutY="223.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtAdress" layoutX="40.0" layoutY="386.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="44.0" layoutY="447.0" text="Enter User ID *" textFill="#fcc600">
+      <TextField fx:id="txtName" layoutX="40.0" layoutY="183.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtAdress" layoutX="41.0" layoutY="330.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <Label layoutX="46.0" layoutY="464.0" text="Enter User ID *" textFill="#fcc600">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="49.0" layoutY="290.0" text="NIC *" textFill="#fcc600">
+      <Label layoutX="49.0" layoutY="238.0" text="NIC *" textFill="#fcc600">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="49.0" layoutY="201.0" text="Name *" textFill="#fcc600">
+      <Label layoutX="49.0" layoutY="163.0" text="Name *" textFill="#fcc600">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="49.0" layoutY="360.0" text="Address *" textFill="#fcc600">
+      <Label layoutX="50.0" layoutY="308.0" text="Address *" textFill="#fcc600">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="427.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="433.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/registerNow.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtPassword" layoutX="40.0" layoutY="555.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="44.0" layoutY="528.0" text="Password *" textFill="#f0c900">
+      <TextField fx:id="txtPassword" layoutX="40.0" layoutY="561.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <Label layoutX="46.0" layoutY="534.0" text="Password *" textFill="#f0c900">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -70,15 +66,21 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TableView layoutX="354.0" layoutY="36.0" prefHeight="327.0" prefWidth="630.0">
+      <TableView fx:id="tblEMp" layoutX="354.0" layoutY="36.0" prefHeight="327.0" prefWidth="630.0">
         <columns>
-          <TableColumn prefWidth="99.20001220703125" text="C1" />
-          <TableColumn prefWidth="95.19998168945312" text="C2" />
-            <TableColumn prefWidth="99.199951171875" text="Column X" />
-            <TableColumn prefWidth="97.5999755859375" text="Column X" />
-            <TableColumn prefWidth="111.2000732421875" text="Column X" />
-            <TableColumn prefWidth="129.59991455078125" text="Column X" />
+          <TableColumn fx:id="colName" prefWidth="99.20001220703125" text="Name" />
+          <TableColumn fx:id="colNIC" prefWidth="95.19998168945312" text="NIC" />
+            <TableColumn fx:id="colAddress" prefWidth="99.199951171875" text="Address" />
+            <TableColumn fx:id="coltel" prefWidth="97.5999755859375" text="Tel.NO" />
+            <TableColumn fx:id="colUserID" prefWidth="111.2000732421875" text="User ID" />
+            <TableColumn fx:id="colEmail" prefWidth="129.59991455078125" text="Email" />
         </columns>
       </TableView>
+      <TextField fx:id="tp" layoutX="40.0" layoutY="404.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+      <Label layoutX="52.0" layoutY="382.0" text="Tel.No" textFill="#fcc600">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

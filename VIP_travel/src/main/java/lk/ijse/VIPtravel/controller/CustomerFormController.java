@@ -153,8 +153,9 @@ private  void setcellValues(){
 
         CustomerModle customerModle = new CustomerModle(customerID, NIC, name, telNo, adrs);
         boolean Vaild = isValied();
+        boolean vaildNIC = isValidNic();
         try {
-            if (Vaild) {
+            if (Vaild &&  vaildNIC) {
 
 
                 boolean isSaved = CustomerRepo.Add(customerModle);
@@ -174,9 +175,11 @@ private  void setcellValues(){
 
 
 
-    @FXML
+    @FXML                                     /// check regex temporary
     void btnClear(ActionEvent event) {
        clearFields();
+
+
 
     }
 
@@ -243,9 +246,13 @@ private  void setcellValues(){
     public boolean isValied(){
         if (!Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO, txtTelNO)) return false;
         return true;
+
     }
 
-
+     public  boolean isValidNic(){
+         if (!Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.NIC, txtNIC)) return false;
+         return true;
+     }
 
 
     @FXML
@@ -273,5 +280,12 @@ private  void setcellValues(){
 
     public void telNoAction(javafx.scene.input.KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.TELNO,txtTelNO);
+    }
+
+
+    @FXML
+
+    public void txtNIConAction(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.VIPtravel.Util.TextField.NIC,txtNIC);
     }
 }

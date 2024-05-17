@@ -1,4 +1,4 @@
-package model;
+package model.TM;
 
 
 import lombok.AllArgsConstructor;
@@ -10,15 +10,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @ToString
+public class EmpTm {
 
-public class RegisterModle {
-
+    private String NIC;
+    private String name;
+    private String address;
+    private  int tp;
     private  String userID;
-    private String password;
     private  String email;
-
-    private  String nic;
-
-
-
 }

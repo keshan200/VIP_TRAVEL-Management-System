@@ -16,8 +16,6 @@ public class ReturnFormRepo {
         Connection connection = DBconnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 
-
-
         try {
             boolean isReturnSaved = ReturnRepo.save(ret.getReturn());
             if (isReturnSaved) {

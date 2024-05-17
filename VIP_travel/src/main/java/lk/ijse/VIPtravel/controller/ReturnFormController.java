@@ -191,28 +191,38 @@ public class ReturnFormController {
         String damage = cmbDamge.getValue();
         String desc = txtdesc.getText();
 
+        if (status == null || date == null || nic.isEmpty() || damage == null || desc.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill all the required fields.").show();
+            return;
+        }
 
         List<ReturnDetailsModle>RetunList = new ArrayList<>();
 
-        for (ReturnTM tm : tblReturn.getItems()) {
+       /* for (ReturnTM tm : tblReturn.getItems()) {
             ReturnDetailsModle R = new ReturnDetailsModle(
 
                     tm.getReturnID(),
                     tm.getRegNo()
 
-            );
-
-            RetunList.add(R);
-
+            );*/
+        for (ReturnTM tm : tblReturn.getItems()) {
+            ReturnDetailsModle r = new ReturnDetailsModle(tm.getReturnID(), tm.getRegNo());
+            RetunList.add(r);
         }
+
+           // RetunList.add(R);
+
+
 
         ReturnModle returnModle = new ReturnModle(retID,status,date,nic,damage,desc);
         RetutnFormModle retutnFormModle = new RetutnFormModle(returnModle, RetunList);
 
+
+
           try {
              String NIC = txtNIC.getText();
               boolean isOk = ReturnFormRepo.SetReturn(retutnFormModle);
-              if (isOk ) {
+              if (isOk) {
                   retList.clear();
 
                   new Alert(Alert.AlertType.CONFIRMATION,"Return Sucsess").show();
@@ -224,6 +234,7 @@ public class ReturnFormController {
 
               }else {
                   new Alert(Alert.AlertType.ERROR,"Can 't Return ").show();
+                  System.out.println(retList);
                   clearFields();
                   loadAllReservations();
                   txtNIC.setDisable(false);
@@ -247,6 +258,8 @@ public class ReturnFormController {
         String damages = cmbDamge.getValue();
         String desc = txtdesc.getText();
 
+
+
         JFXButton remove = new JFXButton("❌");
         remove.setCursor(Cursor.HAND);
         remove.setStyle("-fx-text-fill: red;");
@@ -266,7 +279,8 @@ public class ReturnFormController {
         });
 
 
-        if (!retList.isEmpty()) {
+
+      if (!retList.isEmpty()) {
           for(int i =0;i< retList.size();i++){
               if (regNo.equals(colRegNo.getCellData(i))) {
                   ReturnTM tm = retList.get(i);
@@ -277,8 +291,11 @@ public class ReturnFormController {
           }
         }
 
+
+
         txtNIC.setDisable(true);
         ReturnTM tm = new ReturnTM(returnID,status,date,NIC,regNo,damages,desc,remove);
+        System.out.println(tm);
         retList.add(tm);
         tblReturn.setItems(retList);
 
@@ -303,7 +320,7 @@ public class ReturnFormController {
 
     public  void  setCmbDamage(){
 
-        ObservableList<String> list = FXCollections.observableArrayList("Yes", "No", "Hard Damage","Pending");
+        ObservableList<String> list = FXCollections.observableArrayList("Yes","No","Hard Damage");
         cmbDamge.setItems(list);
 
     }
@@ -312,7 +329,7 @@ public class ReturnFormController {
 
     public  void  setCmbStatus(){
 
-        ObservableList<String> list = FXCollections.observableArrayList("Complete", "Not Complete");
+        ObservableList<String> list = FXCollections.observableArrayList("Complete","InComplete");
         cmbStatus.setItems(list);
 
     }

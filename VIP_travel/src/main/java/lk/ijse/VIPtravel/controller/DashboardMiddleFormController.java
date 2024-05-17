@@ -108,7 +108,7 @@ public class DashboardMiddleFormController {
         try {
             DashboardRepo dashboardRepo = new DashboardRepo();
             DashBoardModle dashBoardModle = new DashBoardModle();
-            int EmployeeCount = dashboardRepo.getCustomerCount(dashBoardModle);
+            int EmployeeCount = dashboardRepo.getEmployeeCount(dashBoardModle);
             lblEmploye.setText(String.valueOf(EmployeeCount));
 
         }catch (SQLException i){
