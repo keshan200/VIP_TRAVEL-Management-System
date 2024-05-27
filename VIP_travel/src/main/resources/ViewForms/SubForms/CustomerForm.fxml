@@ -11,7 +11,8 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.CustomerFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="343.0" layoutX="35.0" layoutY="33.0" stroke="#ffc300" strokeType="INSIDE" width="493.0" />
+      <AnchorPane layoutX="25.0" layoutY="28.0" prefHeight="350.0" prefWidth="514.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
+      <AnchorPane layoutX="558.0" layoutY="280.0" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
       <TextField fx:id="txtAddrs" layoutX="302.0" layoutY="289.0" prefHeight="34.0" prefWidth="206.0" style="-fx-background-radius: 10;">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -37,7 +38,6 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="70.0" layoutX="557.0" layoutY="296.0" stroke="#ffd200" strokeType="INSIDE" width="397.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="289.0" layoutX="35.0" layoutY="400.0" stroke="#ffc300" strokeType="INSIDE" width="930.0" />
       <TableView fx:id="tblCustomer" layoutX="39.0" layoutY="403.0" prefHeight="282.0" prefWidth="922.0" style="-fx-background-radius: 10;">
         <columns>
@@ -48,7 +48,6 @@
             <TableColumn fx:id="ColAdrs" prefWidth="197.60001220703123" text="Address" />
         </columns>
       </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="557.0" layoutY="49.0" stroke="#fad100" strokeType="INSIDE" width="397.0" />
       <Label layoutX="54.0" layoutY="181.0" prefHeight="8.0" prefWidth="35.0" text="NIC *" textFill="WHITE">
          <font>
             <Font name="Ebrima" size="14.0" />
@@ -88,5 +87,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <AnchorPane layoutX="558.0" layoutY="33.0" prefHeight="208.0" prefWidth="378.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
    </children>
 </AnchorPane>

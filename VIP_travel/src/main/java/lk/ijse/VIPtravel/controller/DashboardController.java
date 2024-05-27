@@ -40,27 +40,11 @@ public class DashboardController {
 
 
 
-
-
-
-
     public void initialize() {
         setDate();
-
-
-
-
-
-           setMIDDLE();
+        setMIDDLE();
 
     }
-
-
-
-
-
-
-
 
 
     @FXML
@@ -73,6 +57,7 @@ public class DashboardController {
 
 
     }
+
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) throws IOException {
@@ -98,7 +83,6 @@ public class DashboardController {
 
         AncMain.getChildren().clear();
         AncMain.getChildren().add(vehicleLoad);
-
 
     }
 

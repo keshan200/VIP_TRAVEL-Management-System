@@ -161,15 +161,23 @@ WHERE
 				<imageExpression><![CDATA["C:/Users/kesha/Documents/VIP TRAVEL Project/VIP_travel/src/main/resources/Images/logo copy.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="170" y="10" width="232" height="43" forecolor="#FFC517" uuid="9e2d3add-bc28-4916-adaf-48d603114ddb"/>
+				<reportElement x="160" y="9" width="232" height="43" forecolor="#FFC517" uuid="9e2d3add-bc28-4916-adaf-48d603114ddb"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[No,564 B/1, 2nd Kurana Colombo Rd, Negombo., Kurana, Sri Lanka]]></text>
 			</staticText>
 			<line>
-				<reportElement x="410" y="-10" width="1" height="79" forecolor="#FFCD05" uuid="07c530f4-ce63-4891-acdb-9e5069551c2c"/>
+				<reportElement x="380" y="-8" width="1" height="79" forecolor="#FFCD05" uuid="07c530f4-ce63-4891-acdb-9e5069551c2c"/>
 			</line>
+			<staticText>
+				<reportElement x="390" y="8" width="211" height="47" forecolor="#FFDE0A" uuid="d813332f-41c2-406e-9de5-49f32d2f16e9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Contact info :  077 777 1490
+Email          :  info@viptravels.lk]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -340,7 +348,7 @@ WHERE
 	</detail>
 	<columnFooter>
 		<band height="140" splitType="Stretch">
-			<textField>
+			<textField evaluationTime="Report">
 				<reportElement x="420" y="20" width="160" height="30" uuid="e71a7bb9-2414-4f7f-af78-89cb1d939a93"/>
 				<textElement>
 					<font fontName="Arial Black" size="12"/>
@@ -355,12 +363,17 @@ WHERE
 				<text><![CDATA[Net Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="420" y="60" width="150" height="30" uuid="fd7adadb-30a3-4f26-b95f-8f97167076ab"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="402" y="60" width="150" height="30" uuid="fd7adadb-30a3-4f26-b95f-8f97167076ab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{advancedPayment}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="105" width="100" height="30" uuid="b4797393-691b-462d-93c1-25b46e161e6a"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -400,7 +413,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{ResID}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="10" width="100" height="30" uuid="c5fb23ff-de72-4f59-afe8-2086ab9ceb33"/>
+				<reportElement x="300" y="10" width="100" height="30" uuid="c5fb23ff-de72-4f59-afe8-2086ab9ceb33"/>
 				<textFieldExpression><![CDATA[$P{endDate}]]></textFieldExpression>
 			</textField>
 		</band>

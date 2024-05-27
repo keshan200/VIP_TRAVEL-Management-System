@@ -25,7 +25,6 @@ public class DBconnection {
         return db;
     }
 
-    public  Connection getConnection() {
-        return connection;
+    public  Connection getConnection() {return connection;
     }
 }

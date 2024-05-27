@@ -316,13 +316,16 @@ Email          :  info@viptravels.lk]]></text>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="33" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="480" y="10" width="95" height="20" uuid="00f42470-aed1-4d3b-81c5-2c02fa7f12aa"/>
+				<reportElement x="424" y="10" width="154" height="20" uuid="00f42470-aed1-4d3b-81c5-2c02fa7f12aa"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{fullCost1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="336" y="3" width="144" height="30" uuid="23baa63d-25dd-4543-be20-5c1d98c65ae3"/>
+				<reportElement x="280" y="5" width="144" height="30" uuid="23baa63d-25dd-4543-be20-5c1d98c65ae3"/>
 				<textElement>
 					<font fontName="Arial Black" size="20"/>
 				</textElement>

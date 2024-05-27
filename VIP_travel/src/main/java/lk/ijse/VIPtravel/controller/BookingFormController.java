@@ -265,17 +265,7 @@ public class BookingFormController {
         txtTotalCost.setText(String.valueOf(netTotal));
     }
 
-   /* private void calculateNetTotal() {
-        String days = txtDayCount.getText();
-        String costPerDay = txtCostPerDay.getText();
 
-        if (!days.isEmpty() && !costPerDay.isEmpty()) {
-            double daysValue = Double.parseDouble(days);
-            double costPerDayValue = Double.parseDouble(costPerDay);
-            double fullCost = daysValue * costPerDayValue;
-            txtTotalCost.setText(String.valueOf(fullCost));
-        }
-    }*/
 
     @FXML
     void vehicleNameOnAction(ActionEvent event) {

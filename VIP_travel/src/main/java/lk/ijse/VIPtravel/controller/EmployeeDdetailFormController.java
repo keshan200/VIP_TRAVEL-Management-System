@@ -205,10 +205,10 @@ public class EmployeeDdetailFormController {
     @FXML
     void btnDelete(ActionEvent event) {
         String Nic = txtNIC.getText();
-        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this vehicle?").showAndWait();
+        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this Employee?").showAndWait();
         try {
             if (EmployeeDetailsRepo.delete(Nic)) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Vehicle Deleted Successfully").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted Successfully").show();
                 clearFields();
                loadAllemp();
 

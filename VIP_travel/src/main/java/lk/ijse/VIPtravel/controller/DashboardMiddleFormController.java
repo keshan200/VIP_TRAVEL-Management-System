@@ -3,6 +3,7 @@ package lk.ijse.VIPtravel.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +47,9 @@ public class DashboardMiddleFormController {
 
     @FXML
     private Label lblVan;
+
+
+
 
     public void initialize(){
 

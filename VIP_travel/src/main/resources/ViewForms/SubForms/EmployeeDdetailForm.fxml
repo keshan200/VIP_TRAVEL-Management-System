@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.EmployeeDdetailFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="204.0" layoutX="386.0" layoutY="439.0" stroke="#ffbe09" strokeType="INSIDE" width="586.0" />
+      <AnchorPane layoutX="346.0" layoutY="404.0" prefHeight="267.0" prefWidth="630.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
+      <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="665.0" prefWidth="295.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="342.0" layoutX="346.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="646.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="661.0" layoutX="22.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="308.0" />
       <ImageView fitHeight="101.0" fitWidth="97.0" layoutX="121.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/male%20usere.png" />

@@ -80,28 +80,7 @@ public class VehicleRepo {
             return nameList;
         }
 
-   /* public static List<VehicleModle> SearchByVehicleName(String vehicleName) throws SQLException {
 
-        String sql = "SELECT vehicleName, regNo, cost AS costPerDay FROM vehicle WHERE availability = 'Available' AND vehicleName = ?";
-
-        Connection connection = DBconnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setObject(1, vehicleName);
-
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()) {
-            String vehicleNameResult = resultSet.getString(1);
-            String regNo = resultSet.getString(2);
-            Double cost = resultSet.getDouble(3);
-
-            VehicleModle vehicleModle = new VehicleModle(vehicleNameResult, regNo, cost);
-
-           return vehicleModle;
-        }
-
-        return null;
-    }*/
    public static List<VehicleModle> SearchByVehicleName(String vehicleName) throws SQLException {
 
        String sql = "SELECT vehicleName, regNo, cost AS costPerDay FROM vehicle WHERE availability = 'Available' AND vehicleName = ?";

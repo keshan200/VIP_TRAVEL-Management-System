@@ -16,10 +16,23 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.ReturnFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#080808" height="404.0" layoutX="17.0" layoutY="39.0" stroke="GOLD" strokeType="INSIDE" width="626.0" />
+      <AnchorPane layoutX="28.0" layoutY="39.0" prefHeight="402.0" prefWidth="610.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
+      <AnchorPane layoutX="651.0" layoutY="46.0" prefHeight="315.0" prefWidth="336.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <JFXButton layoutX="76.0" layoutY="254.0" onAction="#btnReportPrint" prefHeight="35.0" prefWidth="198.0" style="-fx-background-color: gold; -fx-background-radius: 30;" text="    Print Reprot">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="90.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/print.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="241.0" layoutX="14.0" layoutY="458.0" stroke="GOLD" strokeType="INSIDE" width="970.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="70.0" layoutX="668.0" layoutY="377.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="318.0" layoutX="665.0" layoutY="40.0" stroke="GOLD" strokeType="INSIDE" width="307.0" />
       <TextField fx:id="txtNIC" layoutX="71.0" layoutY="210.0" onAction="#nicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;">
          <font>
             <Font size="15.0" />

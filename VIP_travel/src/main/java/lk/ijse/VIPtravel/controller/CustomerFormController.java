@@ -85,10 +85,9 @@ private void ShowSelectedCustomerDetails(){
         txtAddrs.setText(details .getAddress());
     }
 }
+
+
    private  void loadAllCustomers(){
-
-
-
        ObservableList<CustomerTM> obList = FXCollections.observableArrayList();
 
        try {
@@ -103,8 +102,6 @@ private void ShowSelectedCustomerDetails(){
        } catch (SQLException e) {
            throw new RuntimeException(e);
        }
-
-
    }
 
 
@@ -118,6 +115,7 @@ private void ShowSelectedCustomerDetails(){
 
     }
 
+    
     public  void getCurrentID(){
         try {
             String curentID = CustomerRepo.getCurrentId();
@@ -156,7 +154,6 @@ private  void setcellValues(){
         try {
             if (Vaild ) {
 
-
                 boolean isSaved = CustomerRepo.Add(customerModle);
                 System.out.println(customerModle);
                 if (isSaved) {
@@ -174,7 +171,7 @@ private  void setcellValues(){
 
 
 
-    @FXML                                     /// check regex temporary
+    @FXML
     void btnClear(ActionEvent event) {
        clearFields();
 
@@ -205,13 +202,10 @@ private  void setcellValues(){
                     new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted ").show();
                     clearFields();
                     loadAllCustomers();
-
-}
-
+         }
             } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-
     }
 
     @FXML

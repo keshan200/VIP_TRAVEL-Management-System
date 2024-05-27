@@ -9,12 +9,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ancLogin" prefHeight="417.0" prefWidth="722.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.LoginFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#86888a7c" height="296.0" layoutX="311.0" layoutY="33.0" stroke="#ffd000" strokeType="INSIDE" strokeWidth="3.0" width="370.0" />
+      <AnchorPane layoutX="317.0" layoutY="38.0" prefHeight="290.0" prefWidth="358.0" style="-fx-background-color: gray; -fx-background-radius: 30;" />
       <Label layoutX="417.0" layoutY="41.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="156.0" text="Login Form" textAlignment="CENTER" textFill="#ffc300" wrapText="true">
          <font>
             <Font name="Ebrima Bold" size="28.0" />
@@ -42,12 +41,12 @@
             <Image url="@../Images/password%20white.png" />
          </image>
       </ImageView>
-      <Button layoutX="364.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: white;" text="    Register as New Employer">
+      <Button layoutX="364.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="    Register as New Employer">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="375.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="381.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/register.png" />
          </image>

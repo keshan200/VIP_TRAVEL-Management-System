@@ -15,7 +15,8 @@
 
 <AnchorPane fx:id="AncReservation" prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.BookingFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="21.0" layoutY="18.0" stroke="#ffc800" strokeType="INSIDE" width="655.0" />
+      <AnchorPane layoutX="21.0" layoutY="16.0" prefHeight="412.0" prefWidth="646.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
+      <AnchorPane layoutX="709.0" layoutY="16.0" prefHeight="412.0" prefWidth="263.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
       <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 15;">
          <font>
             <Font size="15.0" />
@@ -84,8 +85,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" layoutX="691.0" layoutY="18.0" stroke="#ffd700" strokeType="INSIDE" width="290.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="250.0" layoutX="22.0" layoutY="446.0" stroke="#ffd700" strokeType="INSIDE" width="967.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="250.0" layoutX="23.0" layoutY="446.0" stroke="#ffd700" strokeType="INSIDE" width="966.0" />
       <TableView fx:id="tblReservation" layoutX="29.0" layoutY="451.0" prefHeight="238.0" prefWidth="954.0">
         <columns>
           <TableColumn fx:id="colResID" prefWidth="135.99994277954102" text="Reservation ID" />

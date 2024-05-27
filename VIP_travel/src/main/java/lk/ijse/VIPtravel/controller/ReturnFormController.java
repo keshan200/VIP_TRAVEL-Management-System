@@ -20,17 +20,23 @@ import lk.ijse.VIPtravel.DBconnection.DBconnection;
 import model.*;
 import model.TM.CartTM;
 import model.TM.ReturnTM;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import repository.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ReturnFormController {
 
@@ -397,7 +403,12 @@ public class ReturnFormController {
 
     }
 
+    @FXML
+    void btnReportPrint(ActionEvent event) {
 
+
+
+    }
 
 }
 
