@@ -205,6 +205,11 @@ public class EmployeeDdetailFormController {
     @FXML
     void btnDelete(ActionEvent event) {
         String Nic = txtNIC.getText();
+        if(Nic.isEmpty()){
+            new Alert(Alert.AlertType.WARNING,"Enter NIC Before Delete!!").show();
+            return;
+        }
+
         new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this Employee?").showAndWait();
         try {
             if (EmployeeDetailsRepo.delete(Nic)) {
