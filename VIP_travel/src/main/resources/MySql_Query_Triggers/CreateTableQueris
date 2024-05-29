@@ -1,6 +1,51 @@
+drop table if exists viptravels;
+
 create table viptravels;
 
-use viptravles;
+use viptravels;
+
+
+
+
+CREATE TABLE vehicle (
+    vehicleID VARCHAR(5) NOT NULL PRIMARY KEY,
+    regNo VARCHAR(10) UNIQUE,
+    year VARCHAR(4),
+    vehicleName VARCHAR(20),
+    fuelType VARCHAR(10),
+    vehicleType VARCHAR(20),
+    cost DECIMAL(10,2),
+    availability VARCHAR(20)
+);
+
+CREATE TABLE insurance (
+    insuranceID VARCHAR(5) NOT NULL PRIMARY KEY,
+    companyName VARCHAR(50),
+    type VARCHAR(20),
+    endDate VARCHAR(10),
+    regNo VARCHAR(10),
+    vehicleID VARCHAR(20),
+    FOREIGN KEY (regNo) REFERENCES vehicle(regNo),
+    FOREIGN KEY (vehicleID) REFERENCES vehicle(vehicleID)
+);
+
+CREATE TABLE customer (
+    customerID VARCHAR(5) NOT NULL PRIMARY KEY,
+    NIC VARCHAR(20) UNIQUE,
+    name VARCHAR(20),
+    telephoneNO INT UNIQUE,
+    address VARCHAR(20)
+);
+
+CREATE TABLE reservation (
+    reservationID VARCHAR(5) NOT NULL PRIMARY KEY,
+    customerID VARCHAR(5),
+    NIC VARCHAR(20),
+    reservationDate DATE,
+    FOREIGN KEY (customerID) REFERENCES customer(customerID),
+    FOREIGN KEY (NIC) REFERENCES customer(NIC)
+);
+
 
 CREATE TABLE bookingdetails (
     vehicleID VARCHAR(5),
@@ -15,41 +60,8 @@ CREATE TABLE bookingdetails (
     FOREIGN KEY (reservationID) REFERENCES reservation(reservationID)
 );
 
-
-CREATE TABLE customer (
-    customerID VARCHAR(5) NOT NULL,
-    NIC VARCHAR(20) UNIQUE,
-    name VARCHAR(20),
-    telephoneNO INT UNIQUE,
-    address VARCHAR(20),
-    PRIMARY KEY (customerID)
-);
-
-CREATE TABLE employee (
-    employe_NIC VARCHAR(20) NOT NULL,
-    name VARCHAR(30),
-    address VARCHAR(30),
-    TP INT,
-    userID VARCHAR(5) UNIQUE,
-    password VARCHAR(8),
-    email VARCHAR(30),
-    PRIMARY KEY (employe_NIC)
-);
-
-CREATE TABLE insurance (
-    insuranceID VARCHAR(5) NOT NULL,
-    companyName VARCHAR(50),
-    type VARCHAR(20),
-    endDate VARCHAR(10),
-    regNO VARCHAR(10),
-    vehicleID VARCHAR(20),
-    PRIMARY KEY (insuranceID),
-    FOREIGN KEY (regNO) REFERENCES vehicle(regNo),
-    FOREIGN KEY (vehicleID) REFERENCES vehicle(vehicleID)
-);
-
 CREATE TABLE payment (
-    paymentID VARCHAR(5) NOT NULL,
+    paymentID VARCHAR(5) NOT NULL PRIMARY KEY,
     status VARCHAR(20),
     type VARCHAR(20),
     fullpayment DECIMAL(10,2),
@@ -58,32 +70,22 @@ CREATE TABLE payment (
     paymentMethod VARCHAR(20) NOT NULL,
     advanced_payment DECIMAL(10,2) DEFAULT 0.00,
     balance_payment DECIMAL(10,2) DEFAULT 0.00,
-    PRIMARY KEY (paymentID),
     FOREIGN KEY (reservationID) REFERENCES reservation(reservationID)
 );
 
-CREATE TABLE reservation (
-    reservationID VARCHAR(5) NOT NULL,
-    customerID VARCHAR(5),
-    NIC VARCHAR(20),
-    reservationDate DATE,
-    PRIMARY KEY (reservationID),
-    FOREIGN KEY (customerID) REFERENCES customer(customerID),
-    FOREIGN KEY (NIC) REFERENCES customer(NIC)
-);
 
 CREATE TABLE return_ (
-    returnID VARCHAR(5) NOT NULL,
+    returnID VARCHAR(5) NOT NULL PRIMARY KEY,
     status VARCHAR(10),
     returnDate DATE,
     customerID VARCHAR(5),
     NIC VARCHAR(20),
     damages VARCHAR(255),
     description VARCHAR(255),
-    PRIMARY KEY (returnID),
     FOREIGN KEY (customerID) REFERENCES customer(customerID),
     FOREIGN KEY (NIC) REFERENCES customer(NIC)
 );
+
 
 CREATE TABLE returndetails (
     returnID VARCHAR(5),
@@ -94,14 +96,12 @@ CREATE TABLE returndetails (
     FOREIGN KEY (regNo) REFERENCES vehicle(regNo)
 );
 
-CREATE TABLE vehicle (
-    vehicleID VARCHAR(5) NOT NULL,
-    regNo VARCHAR(10) UNIQUE,
-    year VARCHAR(4),
-    vehicleName VARCHAR(20),
-    fuelType VARCHAR(10),
-    vehicleType VARCHAR(20),
-    cost DECIMAL(10,2),
-    availability VARCHAR(20),
-    PRIMARY KEY (vehicleID)
+CREATE TABLE employee (
+    employe_NIC VARCHAR(20) NOT NULL PRIMARY KEY,
+    name VARCHAR(30),
+    address VARCHAR(30),
+    TP INT,
+    userID VARCHAR(5) UNIQUE,
+    password VARCHAR(8),
+    email VARCHAR(30)
 );
