@@ -20,8 +20,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="356.0" layoutX="45.0" layoutY="42.0" stroke="#ffdf00" strokeType="INSIDE" width="955.0" />
-      <AnchorPane layoutX="711.0" layoutY="69.0" prefHeight="123.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="343.0" layoutX="23.0" layoutY="43.0" stroke="#ffdf00" strokeType="INSIDE" width="955.0" />
+      <AnchorPane layoutX="712.0" layoutY="65.0" prefHeight="123.0" prefWidth="242.0" style="-fx-background-color: gold; -fx-background-radius: 20;">
          <children>
             <Label layoutX="34.0" prefHeight="39.0" prefWidth="192.0" text="Employe Count">
                <font>
@@ -117,7 +117,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="45.0" layoutY="417.0" prefHeight="254.0" prefWidth="412.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+      <AnchorPane layoutX="29.0" layoutY="422.0" prefHeight="254.0" prefWidth="412.0" style="-fx-background-color: black; -fx-background-radius: 30;">
          <children>
             <TableView fx:id="tblVehicleAvailable" layoutX="27.0" layoutY="11.0" prefHeight="232.0" prefWidth="358.0" style="-fx-background-image: green; -fx-background-color: black; -fx-background-radius: 50;">
                <columns>

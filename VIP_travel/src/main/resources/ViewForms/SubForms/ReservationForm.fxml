@@ -17,7 +17,7 @@
    <children>
       <AnchorPane layoutX="21.0" layoutY="16.0" prefHeight="412.0" prefWidth="646.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
       <AnchorPane layoutX="709.0" layoutY="16.0" prefHeight="412.0" prefWidth="263.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="130.0" style="-fx-background-radius: 15;">
+      <TextField fx:id="txtReservationID" layoutX="41.0" layoutY="90.0" prefHeight="34.0" prefWidth="191.0" style="-fx-background-radius: 15;">
          <font>
             <Font size="15.0" />
          </font></TextField>
@@ -153,9 +153,9 @@
             <Image url="@../../Images/print.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="39.0" layoutX="786.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="786.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/payment.png" />
+            <Image url="@../../Images/Add%20Payment%20colour.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="29.0" fitWidth="23.0" layoutX="782.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
@@ -163,7 +163,7 @@
             <Image url="@../../Images/add%20booking%20colour.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtDate" layoutX="296.0" layoutY="95.0" prefHeight="34.0" prefWidth="150.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtDate" layoutX="296.0" layoutY="95.0" prefHeight="34.0" prefWidth="191.0" style="-fx-background-radius: 15;" />
       <Label layoutX="297.0" layoutY="64.0" prefHeight="18.0" prefWidth="122.0" text="Date" textFill="WHITE">
          <font>
             <Font size="16.0" />

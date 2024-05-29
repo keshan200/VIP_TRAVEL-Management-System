@@ -12,67 +12,31 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.VehicleFormController">
    <children>
-      <AnchorPane layoutX="614.0" layoutY="310.0" prefHeight="79.0" prefWidth="371.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <AnchorPane fx:id="AncVehicle" layoutX="42.0" layoutY="30.0" prefHeight="362.0" prefWidth="550.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+      <AnchorPane layoutX="614.0" layoutY="327.0" prefHeight="79.0" prefWidth="371.0" style="-fx-background-color: black; -fx-background-radius: 30;">
          <children>
-            <AnchorPane layoutX="32.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
-            <TextField fx:id="txtVehicleID" layoutX="29.0" layoutY="76.0" onAction="#txtSearch" prefHeight="34.0" prefWidth="206.0" promptText="          Vehicle ID *" style="-fx-background-radius: 15;">
+            <JFXButton layoutX="15.0" layoutY="22.0" onAction="#btnSave" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Save">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
-            </TextField>
-            <TextField fx:id="txtYear" layoutX="29.0" layoutY="144.0" prefHeight="34.0" prefWidth="206.0" promptText="              Year *" style="-fx-background-radius: 15;">
+            </JFXButton>
+            <JFXButton layoutX="106.0" layoutY="22.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Update">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
-            </TextField>
-            <JFXComboBox fx:id="cmbFuelType" layoutX="29.0" layoutY="213.0" prefHeight="34.0" prefWidth="206.0" promptText="                  Fuel Type" style="-fx-background-color: white; -fx-background-radius: 15;" />
-            <TextField fx:id="txtPrice" layoutX="29.0" layoutY="287.0" prefHeight="34.0" prefWidth="206.0" promptText="                 Price *" style="-fx-background-radius: 15;">
+            </JFXButton>
+            <JFXButton layoutX="195.0" layoutY="22.0" onAction="#btnClear" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Clear">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
-            </TextField>
-            <JFXComboBox fx:id="cmbAvailability" layoutX="297.0" layoutY="287.0" prefHeight="34.0" prefWidth="206.0" promptText="                 Availability *" style="-fx-background-color: white; -fx-background-radius: 15;" />
-            <JFXComboBox fx:id="cmbVehicleType" layoutX="297.0" layoutY="213.0" prefHeight="34.0" prefWidth="206.0" promptText="                Vehicle Type" style="-fx-background-color: white; -fx-background-radius: 15;" />
-            <TextField fx:id="txtVehicleName" layoutX="297.0" layoutY="144.0" prefHeight="34.0" prefWidth="206.0" promptText="         Vehicle Name *" style="-fx-background-radius: 15;">
+            </JFXButton>
+            <JFXButton layoutX="286.0" layoutY="22.0" onAction="#btnDelete" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #c81d25; -fx-background-radius: 20;" text="Delete">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
-            </TextField>
-            <TextField fx:id="txtRegNo" layoutX="297.0" layoutY="76.0" prefHeight="34.0" prefWidth="206.0" promptText="        Register NO * " style="-fx-background-radius: 15;">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </TextField>
-            <Label layoutX="150.0" layoutY="14.0" text="Vehicle Registeration From" textFill="#f0be02">
-               <font>
-                  <Font name="Ebrima Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <JFXButton layoutX="622.0" layoutY="333.0" onAction="#btnSave" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Save">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="715.0" layoutY="333.0" onAction="#btnUpdate" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Update">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="816.0" layoutY="333.0" onAction="#btnClear" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #efa700; -fx-background-radius: 20;" text="Clear">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="910.0" layoutY="333.0" onAction="#btnDelete" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #c81d25; -fx-background-radius: 20;" text="Delete">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXButton>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="281.0" layoutX="41.0" layoutY="409.0" stroke="#fac200" strokeType="INSIDE" width="948.0" />
-      <TableView fx:id="tblVehicle" layoutX="49.0" layoutY="416.0" prefHeight="267.0" prefWidth="931.0">
+            </JFXButton>
+         </children></AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="265.0" layoutX="41.0" layoutY="425.0" stroke="#fac200" strokeType="INSIDE" width="948.0" />
+      <TableView fx:id="tblVehicle" layoutX="49.0" layoutY="432.0" prefHeight="251.0" prefWidth="931.0">
         <columns>
           <TableColumn fx:id="colregNo" prefWidth="132.80002212524414" text="Register No" />
           <TableColumn fx:id="colYear" prefWidth="104.00001525878906" text="Year" />
@@ -83,12 +47,87 @@
             <TableColumn fx:id="colAvailability" prefWidth="169.60009765625" text="Availability" />
         </columns>
       </TableView>
-      <AnchorPane layoutX="611.0" layoutY="38.0" prefHeight="134.0" prefWidth="378.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <AnchorPane layoutX="618.0" layoutY="195.0" prefHeight="102.0" prefWidth="371.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <JFXButton layoutX="708.0" layoutY="229.0" onAction="#btnVehicleINS" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="Add Vehicle Insurance">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXButton>
+      <AnchorPane layoutX="611.0" layoutY="26.0" prefHeight="153.0" prefWidth="378.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
+      <AnchorPane layoutX="614.0" layoutY="201.0" prefHeight="102.0" prefWidth="371.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <JFXButton layoutX="96.0" layoutY="34.0" onAction="#btnVehicleINS" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: gold; -fx-background-radius: 20;" text="Add Vehicle Insurance">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children></AnchorPane>
+      <AnchorPane layoutX="41.0" layoutY="16.0" prefHeight="395.0" prefWidth="550.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <TextField fx:id="txtVehicleID" layoutX="31.0" layoutY="93.0" onAction="#txtSearch" prefHeight="34.0" prefWidth="206.0" promptText="          Vehicle ID *" style="-fx-background-radius: 15;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <JFXComboBox fx:id="cmbFuelType" layoutX="31.0" layoutY="257.0" prefHeight="34.0" prefWidth="206.0" promptText="                  Fuel Type" style="-fx-background-color: white; -fx-background-radius: 15;" />
+            <TextField fx:id="txtPrice" layoutX="29.0" layoutY="335.0" prefHeight="34.0" prefWidth="206.0" promptText="                 Price *" style="-fx-background-radius: 15;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <JFXComboBox fx:id="cmbAvailability" layoutX="303.0" layoutY="335.0" prefHeight="34.0" prefWidth="206.0" promptText="                 Availability *" style="-fx-background-color: white; -fx-background-radius: 15;" />
+            <JFXComboBox fx:id="cmbVehicleType" layoutX="303.0" layoutY="257.0" prefHeight="34.0" prefWidth="206.0" promptText="                Vehicle Type" style="-fx-background-color: white; -fx-background-radius: 15;" />
+            <TextField fx:id="txtVehicleName" layoutX="303.0" layoutY="175.0" prefHeight="34.0" prefWidth="206.0" promptText="         Vehicle Name *" style="-fx-background-radius: 15;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtRegNo" layoutX="302.0" layoutY="93.0" prefHeight="34.0" prefWidth="206.0" promptText="        Register NO * " style="-fx-background-radius: 15;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Label layoutX="150.0" layoutY="14.0" text="Vehicle Registeration From" textFill="#f0be02">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtYear" layoutX="31.0" layoutY="175.0" prefHeight="34.0" prefWidth="206.0" promptText="             Year *" style="-fx-background-radius: 15;" />
+            <Label layoutX="39.0" layoutY="66.0" prefHeight="18.0" prefWidth="102.0" text="Vehicle ID" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="311.0" layoutY="66.0" prefHeight="18.0" prefWidth="102.0" text="Register No" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="311.0" layoutY="238.0" prefHeight="18.0" prefWidth="102.0" text="Vehicle Type" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="238.0" prefHeight="18.0" prefWidth="102.0" text="Fuel Type" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="311.0" layoutY="153.0" prefHeight="18.0" prefWidth="102.0" text="Vehicle Name" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="153.0" prefHeight="18.0" prefWidth="102.0" text="Year" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="310.0" prefHeight="18.0" prefWidth="102.0" text="Price" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="311.0" layoutY="310.0" prefHeight="18.0" prefWidth="102.0" text="Availability" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
