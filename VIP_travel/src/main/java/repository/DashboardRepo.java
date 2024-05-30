@@ -1,6 +1,7 @@
 package repository;
 
 import lk.ijse.VIPtravel.DBconnection.DBconnection;
+import model.BookingDetailsModle;
 import model.DashBoardModle;
 import model.TM.DashboardTableTM;
 
@@ -127,6 +128,34 @@ public class DashboardRepo {
             }
         return vehicleStatisticsList;
         }
+
+
+
+
+    public static List<BookingDetailsModle> getAllSalesByPaymentStatus() throws SQLException {
+        List<BookingDetailsModle> sales = new ArrayList<>();
+        String sql = "SELECT status, COUNT(*) AS Count FROM payment GROUP BY status";
+        Connection connection = DBconnection.getInstance().getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String paymentStatus = resultSet.getString("status");
+                int count = resultSet.getInt("Count");
+                sales.add(new BookingDetailsModle(paymentStatus, count));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return sales;
+    }
+
+
+
+
+
+
+
 
 
     }

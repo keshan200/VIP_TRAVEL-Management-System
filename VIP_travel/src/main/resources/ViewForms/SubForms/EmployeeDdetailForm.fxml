@@ -13,60 +13,53 @@
 
 <AnchorPane prefHeight="707.0" prefWidth="1000.0" style="-fx-background-color: #00303d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.VIPtravel.controller.EmployeeDdetailFormController">
    <children>
-      <AnchorPane layoutX="346.0" layoutY="404.0" prefHeight="267.0" prefWidth="630.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="665.0" prefWidth="295.0" style="-fx-background-color: black; -fx-background-radius: 30;" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="342.0" layoutX="346.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="646.0" />
-      <ImageView fitHeight="101.0" fitWidth="97.0" layoutX="121.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/male%20usere.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="txtuserID" layoutX="40.0" layoutY="486.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtNIC" layoutX="41.0" layoutY="258.0" onAction="#NicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Button layoutX="420.0" layoutY="467.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="         Register Now">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <TextField fx:id="txtName" layoutX="40.0" layoutY="183.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtAdress" layoutX="41.0" layoutY="330.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="46.0" layoutY="464.0" text="Enter User ID *" textFill="#fcc600">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="49.0" layoutY="238.0" text="NIC *" textFill="#fcc600">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="49.0" layoutY="163.0" text="Name *" textFill="#fcc600">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="50.0" layoutY="308.0" text="Address *" textFill="#fcc600">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="433.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/registerNow.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="txtPassword" layoutX="40.0" layoutY="561.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="46.0" layoutY="534.0" text="Password *" textFill="#f0c900">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtemail" layoutX="40.0" layoutY="634.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="49.0" layoutY="608.0" text="Email *" textFill="#ffdd00">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblEMp" layoutX="354.0" layoutY="36.0" prefHeight="327.0" prefWidth="630.0">
+      <AnchorPane layoutX="53.0" layoutY="405.0" prefHeight="288.0" prefWidth="928.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <TextField fx:id="txtName" layoutX="104.0" layoutY="31.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="40.0" layoutY="38.0" text="Name *" textFill="#fcc600">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNIC" layoutX="104.0" layoutY="99.0" onAction="#NicOnAction" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="48.0" layoutY="106.0" text="NIC *" textFill="#fcc600">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAdress" layoutX="104.0" layoutY="234.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="32.0" layoutY="241.0" text="Address *" textFill="#fcc600">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tp" layoutX="104.0" layoutY="167.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="42.0" layoutY="174.0" text="Tel.No" textFill="#fcc600">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtuserID" layoutX="605.0" layoutY="31.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="477.0" layoutY="38.0" text="Enter User ID *" textFill="#fcc600">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPassword" layoutX="605.0" layoutY="99.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="485.0" layoutY="103.0" text="Password *" textFill="#f0c900">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtemail" layoutX="605.0" layoutY="166.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+            <Label layoutX="503.0" layoutY="171.0" text="Email *" textFill="#ffdd00">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="342.0" layoutX="53.0" layoutY="29.0" stroke="#ffbe09" strokeType="INSIDE" width="646.0" />
+      <TableView fx:id="tblEMp" layoutX="61.0" layoutY="36.0" prefHeight="327.0" prefWidth="630.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="99.20001220703125" text="Name" />
           <TableColumn fx:id="colNIC" prefWidth="95.19998168945312" text="NIC" />
@@ -76,21 +69,34 @@
             <TableColumn fx:id="colEmail" prefWidth="129.59991455078125" text="Email" />
         </columns>
       </TableView>
-      <TextField fx:id="tp" layoutX="40.0" layoutY="404.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
-      <Label layoutX="52.0" layoutY="382.0" text="Tel.No" textFill="#fcc600">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="420.0" layoutY="528.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="Update">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="420.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="Delete Account">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
+      <AnchorPane layoutX="723.0" layoutY="36.0" prefHeight="327.0" prefWidth="262.0" style="-fx-background-color: black; -fx-background-radius: 30;">
+         <children>
+            <Button layoutX="54.0" layoutY="51.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="         Register Now">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="59.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/registerNow.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="59.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #fcc600; -fx-background-radius: 20;" text="Update">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="38.0" fitWidth="29.0" layoutX="73.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/update%20colour.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="59.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="37.0" prefWidth="166.0" style="-fx-background-color: #9a031e; -fx-background-radius: 20;" text="Delete Account">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

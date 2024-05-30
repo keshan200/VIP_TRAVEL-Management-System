@@ -4,10 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.BookingDetailsModle;
 import model.DashBoardModle;
 import model.TM.DashboardTableTM;
 import repository.DashboardRepo;
@@ -48,8 +50,8 @@ public class DashboardMiddleFormController {
     @FXML
     private Label lblVan;
 
-
-
+    @FXML
+    private javafx.scene.chart.PieChart ProfitChart;
 
     public void initialize(){
 
@@ -63,6 +65,7 @@ public class DashboardMiddleFormController {
             setVanCount();
             setSuvCount();
             setReservationCount();
+            populatePieChart();
 
 
         } catch (SQLException e) {
@@ -94,6 +97,7 @@ public class DashboardMiddleFormController {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+
     }
 
     public void setCustomerCount() throws SQLException {
@@ -180,4 +184,27 @@ public class DashboardMiddleFormController {
         }
     }
 
-}
+
+
+    private void populatePieChart() {
+        try {
+            List<BookingDetailsModle> sales = DashboardRepo.getAllSalesByPaymentStatus();
+
+            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+            for (BookingDetailsModle sale : sales) {
+                pieChartData.add(new PieChart.Data(sale.getPaymentStatus(), sale.getCount()));
+            }
+
+            ProfitChart.setData(pieChartData);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+
+
+
+    }
+
+
+

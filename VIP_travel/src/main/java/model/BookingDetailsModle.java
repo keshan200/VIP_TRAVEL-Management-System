@@ -26,6 +26,9 @@ public class BookingDetailsModle extends CartTM {
     private int  daysCount;//not in use for calculate NetTotal
     private double  totalCost;
 
+  private  String paymentStatus;
+  private  int count;
+
 
     public BookingDetailsModle(String regNo,String reservationID, LocalDate startDate,LocalDate endDate, double totalCost,int daysCount) {
         this.RegNo = regNo;
@@ -44,5 +47,13 @@ public class BookingDetailsModle extends CartTM {
         this.endDate = endDate;
         this.daysCount = daysCount;
         this.totalCost = totalCost;
+    }
+
+
+
+    public BookingDetailsModle(String paymentStatus, int count) {
+
+        this.paymentStatus=paymentStatus;
+        this. count =count;
     }
 }

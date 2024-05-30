@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -13,11 +14,9 @@
    <children>
       <AnchorPane layoutX="516.0" layoutY="422.0" prefHeight="254.0" prefWidth="458.0" style="-fx-background-color: white; -fx-background-radius: 30;">
          <children>
-            <ImageView fitHeight="232.0" fitWidth="386.0" layoutX="36.0" layoutY="11.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../Images/unnamed.png" />
-               </image>
-            </ImageView>
+            <PieChart layoutX="29.0" layoutY="-193.0" prefHeight="248.0" prefWidth="346.0" />
+            <PieChart layoutX="34.0" layoutY="-178.0" prefHeight="165.0" prefWidth="366.0" />
+            <PieChart fx:id="ProfitChart" layoutX="15.0" layoutY="15.0" prefHeight="232.0" prefWidth="422.0" />
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000f7" height="343.0" layoutX="23.0" layoutY="43.0" stroke="#ffdf00" strokeType="INSIDE" width="955.0" />
